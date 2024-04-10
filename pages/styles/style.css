@@ -60,6 +60,10 @@ span {
   text-shadow: 0 1px 1px #807870;
 }
 
+.selected {
+    background-color: lightblue;
+  }
+
 /* Effectiveness */
 .effectiveness {
   display: flex;
