@@ -1,0 +1,83 @@
+/* Main */
+.main-body {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+/* CSS for container */
+.container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 30%; /* Adjust as needed */
+  height: 70%;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+/* Attack */
+ul {
+  display: block;
+  list-style-type: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+span {
+  width: 30px;
+  background-color: gray;
+}
+.t-type {
+  border-style: solid none;
+  border-top-style: solid;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-left-style: none;
+  border-width: 1px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 0.15em;
+  font-variant: small-caps;
+  font-variant-ligatures: normal;
+  font-variant-numeric: normal;
+  font-variant-east-asian: normal;
+  font-variant-caps: small-caps;
+  font-variant-alternates: normal;
+  font-variant-position: normal;
+  font-size: 9pt;
+  color: #f8f8f8;
+  text-shadow: 0 1px 1px #807870;
+}
+
+/* Effectiveness */
+.effectiveness {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.effectiveness .number {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+/* Defense */
+
+.defense {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

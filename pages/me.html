@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon Effectiveness Page</title>
+  <style>
+    /* CSS for main-body */
+    .main-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch; /* Adjust as needed */
+    }
+
+    /* CSS for container */
+    .container {
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 30%; /* Adjust as needed */
+      box-sizing: border-box;
+    }
+
+    /* CSS for effectness */
+    .effectness {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .effectness .number {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .effectness .arrow {
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 40px solid #ccc; /* Default color */
+    }
+
+    /* CSS for defense */
+    .defense {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .defense select {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-body">
+    <!-- Attack -->
+    <div class="container attack">
+      <h2>Attack</h2>
+      <p>Attack content here...</p>
+    </div>
+
+    <!-- Effectness -->
+    <div class="container effectness">
+      <h2>Effectness</h2>
+      <div class="number">5</div>
+      <div class="arrow"></div>
+    </div>
+
+    <!-- Defense -->
+    <div class="container defense">
+      <h2>Defense</h2>
+      <select required>
+        <option value="">Select Option</option>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+      <select>
+        <option value="">Select Option (Optional)</option>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    </div>
+  </div>
+</body>
+</html>

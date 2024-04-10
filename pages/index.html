@@ -1,186 +1,101 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokemon Effectness</title>
-    <style>
-      ul {
-        display: block;
-        list-style-type: disc;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        padding-inline-start: 40px;
-      }
-      .t-type {
-        border-style: solid none;
-        border-top-style: solid;
-        border-right-style: none;
-        border-bottom-style: solid;
-        border-left-style: none;
-        border-width: 1px;
-        border-top-width: 1px;
-        border-right-width: 1px;
-        border-bottom-width: 1px;
-        border-left-width: 1px;
-        border-radius: 5px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        border-bottom-left-radius: 5px;
-        padding: 0.15em;
-        font-variant: small-caps;
-        font-variant-ligatures: normal;
-        font-variant-numeric: normal;
-        font-variant-east-asian: normal;
-        font-variant-caps: small-caps;
-        font-variant-alternates: normal;
-        font-variant-position: normal;
-        font-size: 9pt;
-        color: #f8f8f8;
-        text-shadow: 0 1px 1px #807870;
-      }
-    </style>
+    <title>Pokemon Effectiveness</title>
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
     <header>
-      <!-- <h2>You dealt</h2> -->
+      <h1>You will dealt</h1>
     </header>
     <div class="main-body">
       <div class="attack container">
+        <h3>Attack Type</h3>
         <ul>
-          <li>
-            <span class="t-type type-normal"
-              ><a href="/wiki/Normal_type" title="Normal type"
-                ><span class="t-type2">Normal</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-fire"
-              ><a href="/wiki/Fire_type" title="Fire type"
-                ><span class="t-type2">Fire</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-water"
-              ><a href="/wiki/Water_type" title="Water type"
-                ><span class="t-type2">Water</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-electric"
-              ><a href="/wiki/Electric_type" title="Electric type"
-                ><span class="t-type2">Electric</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-grass"
-              ><a href="/wiki/Grass_type" title="Grass type"
-                ><span class="t-type2">Grass</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-ice"
-              ><a href="/wiki/Ice_type" title="Ice type"
-                ><span class="t-type2">Ice</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-fighting"
-              ><a href="/wiki/Fighting_type" title="Fighting type"
-                ><span class="t-type2">Fighting</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-poison"
-              ><a href="/wiki/Poison_type" title="Poison type"
-                ><span class="t-type2">Poison</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-ground"
-              ><a href="/wiki/Ground_type" title="Ground type"
-                ><span class="t-type2">Ground</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-flying"
-              ><a href="/wiki/Flying_type" title="Flying type"
-                ><span class="t-type2">Flying</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-psychic"
-              ><a href="/wiki/Psychic_type" title="Psychic type"
-                ><span class="t-type2">Psychic</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-bug"
-              ><a href="/wiki/Bug_type" title="Bug type"
-                ><span class="t-type2">Bug</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-rock"
-              ><a href="/wiki/Rock_type" title="Rock type"
-                ><span class="t-type2">Rock</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-ghost"
-              ><a href="/wiki/Ghost_type" title="Ghost type"
-                ><span class="t-type2">Ghost</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-dragon"
-              ><a href="/wiki/Dragon_type" title="Dragon type"
-                ><span class="t-type2">Dragon</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-dark"
-              ><a href="/wiki/Dark_type" title="Dark type"
-                ><span class="t-type2">Dark</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-steel"
-              ><a href="/wiki/Steel_type" title="Steel type"
-                ><span class="t-type2">Steel</span></a
-              ></span
-            >
-          </li>
-          <li>
-            <span class="t-type type-fairy"
-              ><a href="/wiki/Fairy_type" title="Fairy type"
-                ><span class="t-type2">Fairy</span></a
-              ></span
-            >
-          </li>
+          <li><span class="t-type type-normal">Normal</span></li>
+          <li><span class="t-type type-fire">Fire</span></li>
+          <li><span class="t-type type-water">Water</span></li>
+          <li><span class="t-type type-electric">Electric</span></li>
+          <li><span class="t-type type-grass">Grass</span></li>
+          <li><span class="t-type type-ice">Ice</span></li>
+          <li><span class="t-type type-fighting">Fighting</span></li>
+          <li><span class="t-type type-poison">Poison</span></li>
+          <li><span class="t-type type-ground">Ground</span></li>
+          <li><span class="t-type type-flying">Flying</span></li>
+          <li><span class="t-type type-psychic">Psychic</span></li>
+          <li><span class="t-type type-bug">Bug</span></li>
+          <li><span class="t-type type-rock">Rock</span></li>
+          <li><span class="t-type type-ghost">Ghost</span></li>
+          <li><span class="t-type type-dragon">Dragon</span></li>
+          <li><span class="t-type type-dark">Dark</span></li>
+          <li><span class="t-type type-steel">Steel</span></li>
+          <li><span class="t-type type-fairy">Fairy</span></li>
         </ul>
       </div>
-      <div class="effectness container"></div>
-      <div class="defence container"></div>
+      <div class="effectiveness container">
+        <div class="effectiveness-content">
+          <div class="number">1x</div>
+          <div class="arrow"></div>
+        </div>
+      </div>
+      <div class="defense container">
+        <h3>Defense Type</h2>
+        <div class="defense-content">
+          <!-- Select box for required option -->
+          <div class="first-type">
+            <select required>
+                <option value="normal">Normal</option>
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="electric">Electric</option>
+                <option value="grass">Grass</option>
+                <option value="ice">Ice</option>
+                <option value="fighting">Fighting</option>
+                <option value="poison">Poison</option>
+                <option value="ground">Ground</option>
+                <option value="flying">Flying</option>
+                <option value="psychic">Psychic</option>
+                <option value="bug">Bug</option>
+                <option value="rock">Rock</option>
+                <option value="ghost">Ghost</option>
+                <option value="dragon">Dragon</option>
+                <option value="dark">Dark</option>
+                <option value="steel">Steel</option>
+                <option value="fairy">Fairy</option>
+              </select>
+          </div>
+          
+          <div class="second-type">
+            <select>
+                <option value="normal">Normal</option>
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="electric">Electric</option>
+                <option value="grass">Grass</option>
+                <option value="ice">Ice</option>
+                <option value="fighting">Fighting</option>
+                <option value="poison">Poison</option>
+                <option value="ground">Ground</option>
+                <option value="flying">Flying</option>
+                <option value="psychic">Psychic</option>
+                <option value="bug">Bug</option>
+                <option value="rock">Rock</option>
+                <option value="ghost">Ghost</option>
+                <option value="dragon">Dragon</option>
+                <option value="dark">Dark</option>
+                <option value="steel">Steel</option>
+                <option value="fairy">Fairy</option>
+              </select>
+          </div>
+          
+          
+        </div>
+      </div>
     </div>
+
+    <script src="../js/index.js">
+      // Add JavaScript functionality here if needed
+    </script>
   </body>
 </html>
