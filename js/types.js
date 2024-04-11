@@ -91,4 +91,8 @@ const types = {
     }
 };
 
-module.exports = types;
+// Example usage
+console.log(types.normal.weak); // Output: ["rock", "steel"]
+console.log(types.fire.strong); // Output: ["grass", "ice", "bug", "steel"]
+let a = "ice";
+console.log(types[a]);
