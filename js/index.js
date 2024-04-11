@@ -30,4 +30,10 @@ addEventListener("DOMContentLoaded", () => {
       console.log("Selected value:", selectedValue);
     });
   });
+
+  const defenseList = document.querySelectorAll(".defense .defense-content .type");
+
+  defenseList.addEventListener(, () => {
+    
+  })
 });
