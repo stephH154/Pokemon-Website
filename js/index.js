@@ -1,32 +1,33 @@
 addEventListener("DOMContentLoaded", () => {
-  // Get reference to the list
-  const list = document.getElementById("attack-type");
+  // Get reference to the list of spans
+  const spanList = document.querySelectorAll("#attack-type li span");
 
-  // Add click event listener to the list
-  list.addEventListener("click", function (event) {
-    // Check if clicked element is an <li> element
-    if (event.target.tagName === "LI") {
-      // Remove "selected" class from previously selected item (if any)
-      const selectedItem = list.querySelector(".selected");
-      if (selectedItem) {
-        selectedItem.classList.remove("selected");
+  // Add click event listener to each span
+  spanList.forEach((span) => {
+    span.addEventListener("click", function (event) {
+      // Remove "selected" class from previously selected span (if any)
+      const selectedSpan = document.querySelector("#attack-type .selected");
+      if (selectedSpan) {
+        selectedSpan.classList.remove("selected");
       }
-      // Add "selected" class to the clicked item
-      event.target.classList.add("selected");
-      // Get the <span> tag inside the selected item
-      const selectedSpan = event.target.querySelector("span");
-      // Get the class name of the <span> tag
-      const selectedSpanClassName = selectedSpan.className;
-      // Split the class name by space to get individual classes
-      const classes = selectedSpanClassName.split(" ");
-      // Find the class name containing "type-"
-      const typeClass = classes.find((className) =>
-        className.startsWith("type-")
-      );
-      // Extract the part after "type-"
-      const typeValue = typeClass.split("-")[1];
-      // Log the extracted type value
-      console.log("Selected type:", typeValue);
-    }
+      // Add "selected" class to the clicked span
+      this.classList.add("selected");
+      // Get the value associated with the clicked span
+      const selectedValue = this.dataset.value;
+      // // Get the class name of the clicked span
+      // const selectedSpanClassName = this.className;
+      // // Split the class name by space to get individual classes
+      // const classes = selectedSpanClassName.split(" ");
+      // // Find the class name containing "type-"
+      // const typeClass = classes.find((className) =>
+      //   className.startsWith("type-")
+      // );
+      // // Extract the part after "type-"
+      // const typeValue = typeClass.split("-")[1];
+      // // Log the extracted type value
+      // console.log("Selected type:", typeValue);
+      // Return the selected value (you can do whatever you want with it)
+      console.log("Selected value:", selectedValue);
+    });
   });
 });

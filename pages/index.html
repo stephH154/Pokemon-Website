@@ -3,6 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokemon Effectiveness</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
@@ -13,32 +14,36 @@
       <div class="attack container">
         <h3>Attack Type</h3>
         <ul id="attack-type">
-          <li><span class="t-type type-normal">Normal</span></li>
-          <li><span class="t-type type-fire">Fire</span></li>
-          <li><span class="t-type type-water">Water</span></li>
-          <li><span class="t-type type-electric">Electric</span></li>
-          <li><span class="t-type type-grass">Grass</span></li>
-          <li><span class="t-type type-ice">Ice</span></li>
-          <li><span class="t-type type-fighting">Fighting</span></li>
-          <li><span class="t-type type-poison">Poison</span></li>
-          <li><span class="t-type type-ground">Ground</span></li>
-          <li><span class="t-type type-flying">Flying</span></li>
-          <li><span class="t-type type-psychic">Psychic</span></li>
-          <li><span class="t-type type-bug">Bug</span></li>
-          <li><span class="t-type type-rock">Rock</span></li>
-          <li><span class="t-type type-ghost">Ghost</span></li>
-          <li><span class="t-type type-dragon">Dragon</span></li>
-          <li><span class="t-type type-dark">Dark</span></li>
-          <li><span class="t-type type-steel">Steel</span></li>
-          <li><span class="t-type type-fairy">Fairy</span></li>
+          <li><span class="t-type type-normal" data-value="normal"><img alt="Normal icon.png" src="//archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/20px-Normal_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/30px-Normal_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/40px-Normal_icon.png 2x">Normal</span></li>
+          <li><span class="t-type type-fire" data-value="fire"><img alt="Fire icon.png" src="//archives.bulbagarden.net/media/upload/thumb/5/5e/Fire_icon.png/20px-Fire_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/5/5e/Fire_icon.png/30px-Fire_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/5/5e/Fire_icon.png/40px-Fire_icon.png 2x">Fire</span></li>
+          <li><span class="t-type type-water" data-value="water"><img alt="Water icon.png" src="//archives.bulbagarden.net/media/upload/thumb/7/7f/Water_icon.png/20px-Water_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/7/7f/Water_icon.png/30px-Water_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/7/7f/Water_icon.png/40px-Water_icon.png 2x">Water</span></li>
+          <li><span class="t-type type-electric" data-value="electric"><img alt="Electric icon.png" src="//archives.bulbagarden.net/media/upload/thumb/a/af/Electric_icon.png/20px-Electric_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/a/af/Electric_icon.png/30px-Electric_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/a/af/Electric_icon.png/40px-Electric_icon.png 2x">Electric</span></li>
+          <li><span class="t-type type-grass" data-value="grass"><img alt="Grass icon.png" src="//archives.bulbagarden.net/media/upload/thumb/c/cb/Grass_icon.png/20px-Grass_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/c/cb/Grass_icon.png/30px-Grass_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/c/cb/Grass_icon.png/40px-Grass_icon.png 2x">Grass</span></li>
+          <li><span class="t-type type-ice" data-value="ice"><img alt="Ice icon.png" src="//archives.bulbagarden.net/media/upload/thumb/8/83/Ice_icon.png/20px-Ice_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/8/83/Ice_icon.png/30px-Ice_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/8/83/Ice_icon.png/40px-Ice_icon.png 2x">Ice</span></li>
+          <li><span class="t-type type-fighting" data-value="fighting"><img alt="Fighting icon.png" src="//archives.bulbagarden.net/media/upload/thumb/7/7d/Fighting_icon.png/20px-Fighting_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/7/7d/Fighting_icon.png/30px-Fighting_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/7/7d/Fighting_icon.png/40px-Fighting_icon.png 2x">Fighting</span></li>
+          <li><span class="t-type type-poison" data-value="poison"><img alt="Poison icon.png" src="//archives.bulbagarden.net/media/upload/thumb/8/84/Poison_icon.png/20px-Poison_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/8/84/Poison_icon.png/30px-Poison_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/8/84/Poison_icon.png/40px-Poison_icon.png 2x">Poison</span></li>
+          <li><span class="t-type type-ground" data-value="ground"><img alt="Ground icon.png" src="//archives.bulbagarden.net/media/upload/thumb/5/58/Ground_icon.png/20px-Ground_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/5/58/Ground_icon.png/30px-Ground_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/5/58/Ground_icon.png/40px-Ground_icon.png 2x">Ground</span></li>
+          <li><span class="t-type type-flying" data-value="flying"><img alt="Flying icon.png" src="//archives.bulbagarden.net/media/upload/thumb/f/f0/Flying_icon.png/20px-Flying_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/f/f0/Flying_icon.png/30px-Flying_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/f/f0/Flying_icon.png/40px-Flying_icon.png 2x">Flying</span></li>
+          <li><span class="t-type type-psychic" data-value="psychic"><img alt="Ground icon.png" src="//archives.bulbagarden.net/media/upload/thumb/5/58/Ground_icon.png/20px-Ground_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/5/58/Ground_icon.png/30px-Ground_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/5/58/Ground_icon.png/40px-Ground_icon.png 2x">Psychic</span></li>
+          <li><span class="t-type type-bug" data-value="bug"><img alt="Bug icon.png" src="//archives.bulbagarden.net/media/upload/thumb/7/79/Bug_icon.png/20px-Bug_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/7/79/Bug_icon.png/30px-Bug_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/7/79/Bug_icon.png/40px-Bug_icon.png 2x">Bug</span></li>
+          <li><span class="t-type type-rock" data-value="rock"><img alt="Rock icon.png" src="//archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/20px-Rock_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/30px-Rock_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/40px-Rock_icon.png 2x">Rock</span></li>
+          <li><span class="t-type type-ghost" data-value="ghost"><img alt="Rock icon.png" src="//archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/20px-Rock_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/30px-Rock_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/40px-Rock_icon.png 2x">Ghost</span></li>
+          <li><span class="t-type type-dragon" data-value="dragon"><img alt="Bug icon.png" src="//archives.bulbagarden.net/media/upload/thumb/7/79/Bug_icon.png/20px-Bug_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/7/79/Bug_icon.png/30px-Bug_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/7/79/Bug_icon.png/40px-Bug_icon.png 2x">Dragon</span></li>
+          <li><span class="t-type type-dark" data-value="dark"><img alt="Rock icon.png" src="//archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/20px-Rock_icon.png" srcset="//archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/30px-Rock_icon.png 1.5x, //archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/40px-Rock_icon.png 2x">Dark</span></li>
+          <li><span class="t-type type-steel" data-value="steel"><img alt="Steel icon.png" src="//archives.bulbagarden.net/media/upload/thumb/b/b8/Steel_icon.png/20px-Steel_icon.png">Steel</span></li>
+          <li><span class="t-type type-fairy" data-value="fairy"><img alt="Fairy icon.png" src="//archives.bulbagarden.net/media/upload/thumb/5/5a/Fairy_icon.png/20px-Fairy_icon.png">Fairy</span></li>
         </ul>
+        
       </div>
       <div class="effectiveness container">
         <div class="effectiveness-content">
           <div class="number">1x</div>
-          <div class="arrow"></div>
+          <div class="arrow "><span class="material-symbols-outlined">
+            trending_flat
+            </span></div>
         </div>
       </div>
+      
       <div class="defense container">
         <h3>Defense Type</h2>
         <div class="defense-content">
