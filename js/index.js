@@ -1,4 +1,18 @@
 addEventListener("DOMContentLoaded", () => {
+  // Variables for effectiveness calculation
+  let effectness = 5;
+  let attk_type;
+  let defs_type;
+
+  // function for calculation
+  const body = document.querySelector("body");
+
+  body.addEventListener("change", function(event) {
+      const eve = document.querySelector(".number");
+      eve.innerHTML = effectness + "x";
+  });
+
+
   // Get reference to the list of spans
   const spanList = document.querySelectorAll("#attack-type li span");
 
@@ -27,13 +41,21 @@ addEventListener("DOMContentLoaded", () => {
       // // Log the extracted type value
       // console.log("Selected type:", typeValue);
       // Return the selected value (you can do whatever you want with it)
+      attk_type = selectedValue;
       console.log("Selected value:", selectedValue);
     });
   });
 
-  const defenseList = document.querySelectorAll(".defense .defense-content .type");
+  const defenseList = document.querySelectorAll(
+    ".defense .defense-content .types"
+  );
 
-  defenseList.addEventListener(, () => {
-    
-  })
+  defenseList.forEach((select) => {
+    addEventListener("change", function (event) {
+      defs_type = this.dataset.value;
+    });
+  });
+
+  
+
 });

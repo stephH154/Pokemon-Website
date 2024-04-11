@@ -51,11 +51,12 @@ ul li {
 ul span {
   height: 20px;
   width: 30px;
-  background-color: gray;
   vertical-align: middle;
 }
 
 ul span img {
+  position: relative;
+  top: 2px;
   width: 15px; /* Make the image fill the entire width of the span */
   height: 15px; /* Make the image fill the entire height of the span */
   object-fit: cover; /* Ensure the image maintains its aspect ratio */
@@ -103,6 +104,7 @@ ul span:hover {
 }
 
 .selected img {
+  top: 8px;
   width: 30px; /* Make the image fill the entire width of the span */
   height: 30px; /* Make the image fill the entire height of the span */
 }
