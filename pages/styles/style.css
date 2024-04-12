@@ -98,7 +98,6 @@ ul span:hover {
   position: relative;
   left: 100px;
   align-self: center;
-  background-color: lightblue;
   padding: 15px;
   font-size: 18px;
 }
@@ -113,6 +112,7 @@ ul span:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: center;
 }
 
 .effectiveness-content {
@@ -137,6 +137,28 @@ ul span:hover {
   font-size: 350px; /* Set the font size to match the container width */
   transform: scaleY(0.5);
 }
+
+/* d-choose for selected type in defense */
+
+.d-choose {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+
+.d-choose img {
+  height: 50px;
+  width: 50px;
+  background-color: aqua;
+}
+
+.d-choose span {
+  font-size: 30px;
+  color: #000000;
+}
+
+
 
 /* Defense */
 
