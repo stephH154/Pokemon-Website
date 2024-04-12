@@ -110,7 +110,7 @@ const types = {
 };
 
 // Variables for effectiveness calculation
-let attk_type;
+let attk_type = "normal";
 let defs_type1;
 let defs_type2;
 
@@ -121,8 +121,8 @@ function recordType(index, type) {
     defs_type2 = type;
   }
   console.log(type);
-  if(type === "none"){
-    
+  if (type === "none") {
+    updateSelectedType(type, '');
     refreshEffectiveness();
     return;
   }
@@ -133,18 +133,25 @@ function recordType(index, type) {
 
 function updateSelectedType(typeName, imageUrl) {
   // Get the container elements
-  const selectedBox = document.querySelector('.imgs');
-  const selectedTypeImg = document.querySelector('.imgs img');
-  const selectedTypeName = document.getElementById('selectedType');
+  const selectedBox = document.querySelector(".imgs");
+  const selectedTypeImg = document.querySelector(".imgs img");
+  const selectedTypeName = document.getElementById("selectedType");
 
   // Update the image source and alt text and bg color
-  if(selectedBox.classList.length > 1){
+  if (selectedBox.classList.length > 1) {
     selectedBox.classList.remove(selectedBox.classList[1]);
+  }
+  if (typeName === "none") {
+    selectedTypeImg.src = '';
+    selectedTypeImg.alt = `None`;
+
+    // Update the type name text
+    selectedTypeName.textContent = typeName;
+    selectedTypeName.style="color: black";
   }
   selectedTypeImg.src = imageUrl;
   selectedTypeImg.alt = `${typeName} icon.png`;
   selectedBox.classList.add(`type-${typeName}`);
-  console.log(selectedBox.classList);
 
   // Update the type name text
   selectedTypeName.textContent = typeName;
