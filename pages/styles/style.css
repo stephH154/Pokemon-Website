@@ -13,7 +13,7 @@ body {
 .container {
   border: 1px solid #000000;
   width: 30%; /* Adjust as needed */
-  height: 70%;
+  height: 100%;
   box-sizing: border-box;
 }
 
@@ -56,10 +56,9 @@ ul span {
 
 ul span img {
   position: relative;
-  top: 2px;
   width: 15px; /* Make the image fill the entire width of the span */
   height: 15px; /* Make the image fill the entire height of the span */
-  object-fit: cover; /* Ensure the image maintains its aspect ratio */
+  object-fit: cover; 
 }
 
 ul span:hover {
@@ -103,7 +102,6 @@ ul span:hover {
 }
 
 .selected img {
-  top: 8px;
   width: 30px; /* Make the image fill the entire width of the span */
   height: 30px; /* Make the image fill the entire height of the span */
 }
@@ -147,15 +145,26 @@ ul span:hover {
   align-self: center;
 }
 
+.d-choose .imgs {
+  border: none;
+  border-radius: 10px;
+  width: 100px; /* Adjusted width */
+  height: 100px; /* Adjusted height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2px; /* Adjusted padding */
+}
+
 .d-choose img {
   height: 50px;
   width: 50px;
-  background-color: aqua;
 }
 
 .d-choose span {
   font-size: 30px;
-  color: #000000;
+  color: white;
 }
 
 
@@ -172,4 +181,64 @@ ul span:hover {
   margin: 30px;
   width: 100px;
   height: 100px;
+}
+
+.defense .types{
+  text-align: center;
+  justify-content: center;
+}
+
+.defense .types .btn-type{
+  background-color: white;
+  color: black;
+  width: 100px;
+  height: 100px;
+}
+
+.modal-content {
+  position: fixed;
+  right: 50px;
+  width: 400px;
+  height: 500px;
+  background-color: rgb(213, 211, 208);
+  box-sizing: border-box;
+}
+
+table {
+  border: none;
+  border-collapse: collapse;
+}
+
+th {
+  border: none;
+  border-radius: 10px;
+  width: 80px; /* Adjusted width */
+  height: 80px; /* Adjusted height */
+  position: relative;
+}
+
+th button {
+  border: none;
+  border-radius: 10px;
+  width: 50px; /* Adjusted width */
+  height: 50px; /* Adjusted height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2px; /* Adjusted padding */
+}
+
+th button img {
+  position: relative;
+  top: 5px;
+  width: 80%; 
+  height: auto;
+  margin-bottom: 2px; /* Added margin between image and text */
+}
+
+th button span {
+  color: white;
+  margin-top: auto;
+  font-size: 10px;
 }
