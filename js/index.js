@@ -122,28 +122,30 @@ function recordType(index, type) {
   }
   console.log(type);
   if (type === "none") {
-    updateSelectedType(type, '');
+    updateSelectedType(type, '', index);
     refreshEffectiveness();
     return;
   }
   console.log(types[type].url);
-  updateSelectedType(type, types[type].url);
+  replaceSelectedBox(type, types[type].url, index)
+  updateSelectedType(type, types[type].url, index);
   refreshEffectiveness();
 }
 
-function updateSelectedType(typeName, imageUrl) {
-  // Get the container elements
-  const selectedBox = document.querySelector(".imgs");
-  const selectedTypeImg = document.querySelector(".imgs img");
-  const selectedTypeName = document.getElementById("selectedType");
+function replaceSelectedBox(typeName, imageUrl, index){
+  if(index === 2){
+    return;
+  }
+  const selectedBox = document.getElementById(`dc-btn${index}`);
+  const selectedTypeImg = document.getElementById(`dc-img${index}`);
+  const selectedTypeName = document.getElementById(`dc-name${index}`);
 
-  // Update the image source and alt text and bg color
   if (selectedBox.classList.length > 1) {
     selectedBox.classList.remove(selectedBox.classList[1]);
   }
   if (typeName === "none") {
-    selectedTypeImg.src = '';
-    selectedTypeImg.alt = `None`;
+    // selectedTypeImg.src = '';
+    // selectedTypeImg.alt = `None`;
 
     // Update the type name text
     selectedTypeName.textContent = typeName;
@@ -151,7 +153,36 @@ function updateSelectedType(typeName, imageUrl) {
   }
   selectedTypeImg.src = imageUrl;
   selectedTypeImg.alt = `${typeName} icon.png`;
+  selectedTypeName.style="color: white";
   selectedBox.classList.add(`type-${typeName}`);
+  console.log(selectedBox);
+
+  // Update the type name text
+  selectedTypeName.textContent = typeName;
+}
+
+function updateSelectedType(typeName, imageUrl, index) {
+  // Get the container elements
+  const selectedBox = document.querySelector(`#img${index} img`);
+  const selectedTypeImg = document.getElementById(`img${index}`);
+  const selectedTypeName = document.getElementById(`selectedType${index}`);
+
+
+  // Update the image source and alt text and bg color
+  if (selectedTypeImg.classList.length > 1) {
+    selectedTypeImg.classList.remove(selectedTypeImg.classList[1]);
+  }
+  if (typeName === "none") {
+    // selectedBox.src = '';
+    // selectedBox.alt = `None`;
+
+    // Update the type name text
+    selectedTypeName.textContent = typeName;
+    selectedTypeName.style="color: black";
+  }
+  selectedBox.src = imageUrl;
+  selectedBox.alt = `${typeName} icon.png`;
+  selectedTypeImg.classList.add(`type-${typeName}`);
 
   // Update the type name text
   selectedTypeName.textContent = typeName;
@@ -178,6 +209,19 @@ function refreshEffectiveness() {
   }
 
   eve.innerHTML = effectness + "x";
+  const arrow = document.querySelector(".material-symbols-outlined");
+  arrow.style = "color: rgb(123, 120, 120)";
+  if(effectness != 1){
+    if(effectness > 1){
+      arrow.style = "color: red";
+    }
+    else if(effectness === 0){
+      arrow.style = "color: lightgray";
+    }
+    else{
+      arrow.style = "color: green";
+    }
+  }
 }
 
 addEventListener("DOMContentLoaded", () => {
@@ -221,14 +265,14 @@ addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const defense1 = document.getElementById("type1");
+  // const defense1 = document.getElementById("type1");
   // const defense2 = document.getElementById("type2");
 
-  defense1.addEventListener("change", function (event) {
-    defs_type1 = defense1.value;
-    console.log(defs_type1);
-    refreshEffectiveness();
-  });
+  // defense1.addEventListener("change", function (event) {
+  //   defs_type1 = defense1.value;
+  //   console.log(defs_type1);
+  //   refreshEffectiveness();
+  // });
 
   // defense2.addEventListener("change", function (event) {
   //   defs_type2 = defense2.value;
