@@ -133,9 +133,6 @@ function recordType(index, type) {
 }
 
 function replaceSelectedBox(typeName, imageUrl, index){
-  if(index === 2){
-    return;
-  }
   const selectedBox = document.getElementById(`dc-btn${index}`);
   const selectedTypeImg = document.getElementById(`dc-img${index}`);
   const selectedTypeName = document.getElementById(`dc-name${index}`);
