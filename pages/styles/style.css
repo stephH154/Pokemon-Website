@@ -1,7 +1,7 @@
 /* Main */
 .main-body {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   /* align-items: center; */
 }
 
@@ -11,7 +11,7 @@ body {
 
 /* All Container */
 .container {
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   width: 30%; 
   box-sizing: border-box;
   display: flex;
@@ -38,6 +38,7 @@ h3 {
 .attack {
   display: flex;
   flex-direction: column;
+  width: 200px;
 }
 
 ul {
@@ -48,10 +49,12 @@ ul {
   margin-inline-start: 5px;
   margin-inline-end: 5px;
   padding-inline-start: 40px;
+  padding: 0;
 }
 
 ul li {
   margin: 5px;
+  margin-bottom: 10px;
 }
 
 ul span {
@@ -67,9 +70,22 @@ ul span img {
   object-fit: cover; 
 }
 
-ul span:hover {
+ul li span:hover {
   cursor: pointer;
 }
+
+/* Apply hover effect to span tags inside the list */
+ul li:hover span {
+  transform: scale(1.5); /* Increase the scale on hover */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Ensure other span tags maintain their original distance */
+ul li span {
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+
 .t-type {
   border-style: solid none;
   border-top-style: solid;
@@ -99,7 +115,7 @@ ul span:hover {
   text-shadow: 0 1px 1px #807870;
 }
 
-.selected {
+/* .selected {
   position: relative;
   left: 100px;
   align-self: center;
@@ -109,8 +125,8 @@ ul span:hover {
 
 .selected img {
   width: 30px; /* Make the image fill the entire width of the span */
-  height: 30px; /* Make the image fill the entire height of the span */
-}
+  /* height: 30px; /* Make the image fill the entire height of the span 
+} */ 
 
 /* Effectiveness */
 .effectiveness {
@@ -173,7 +189,7 @@ ul span:hover {
   height: 100px; /* Adjusted height */
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   margin: 50px;
   padding: 2px; /* Adjusted padding */
@@ -181,6 +197,8 @@ ul span:hover {
 }
 
 .d-choose img {
+  align-self: center;
+  justify-content: center;
   height: 50px;
   width: 50px;
 }

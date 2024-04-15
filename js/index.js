@@ -128,7 +128,7 @@ function recordType(index, type) {
   }
   console.log(types[type].url);
   replaceSelectedBox(type, types[type].url, index)
-  updateSelectedType(type, types[type].url, index);
+  // updateSelectedType(type, types[type].url, index);
   refreshEffectiveness();
 }
 
@@ -261,6 +261,7 @@ addEventListener("DOMContentLoaded", () => {
       // Return the selected value (you can do whatever you want with it)
       attk_type = selectedValue;
       console.log("Selected value:", selectedValue);
+      updateSelectedType(attk_type, types[attk_type].url, 1);
       refreshEffectiveness();
     });
   });
