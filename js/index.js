@@ -1,4 +1,10 @@
 const types = {
+  none:{
+    strong: [],
+    weak: [],
+    immune: [],
+    url: "../imgs/icons/Empty.png",
+  },
   normal: {
     strong: [],
     weak: ["rock", "steel"],
@@ -121,11 +127,6 @@ function recordType(index, type) {
     defs_type2 = type;
   }
   console.log(type);
-  if (type === "none") {
-    updateSelectedType(type, '', index);
-    refreshEffectiveness();
-    return;
-  }
   console.log(types[type].url);
   replaceSelectedBox(type, types[type].url, index)
   // updateSelectedType(type, types[type].url, index);
@@ -140,17 +141,15 @@ function replaceSelectedBox(typeName, imageUrl, index){
   if (selectedBox.classList.length > 1) {
     selectedBox.classList.remove(selectedBox.classList[1]);
   }
-  if (typeName === "none") {
-    // selectedTypeImg.src = '';
-    // selectedTypeImg.alt = `None`;
 
-    // Update the type name text
-    selectedTypeName.textContent = typeName;
-    selectedTypeName.style="color: black";
-  }
   selectedTypeImg.src = imageUrl;
   selectedTypeImg.alt = `${typeName} icon.png`;
-  selectedTypeName.style="color: white";
+  if(typeName != 'none'){
+    selectedTypeName.style="color: white";
+  }
+  else{
+    selectedTypeName.style="color: black";
+  }
   selectedBox.classList.add(`type-${typeName}`);
   console.log(selectedBox);
 
@@ -169,14 +168,7 @@ function updateSelectedType(typeName, imageUrl, index) {
   if (selectedTypeImg.classList.length > 1) {
     selectedTypeImg.classList.remove(selectedTypeImg.classList[1]);
   }
-  if (typeName === "none") {
-    // selectedBox.src = '';
-    // selectedBox.alt = `None`;
 
-    // Update the type name text
-    selectedTypeName.textContent = typeName;
-    selectedTypeName.style="color: black";
-  }
   selectedBox.src = imageUrl;
   selectedBox.alt = `${typeName} icon.png`;
   selectedTypeImg.classList.add(`type-${typeName}`);
