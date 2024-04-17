@@ -107,14 +107,9 @@ ul li span:hover {
   text-shadow: 0 1px 1px #807870;
 }
 
-/* .selected {
-  position: relative;
-  left: 100px;
-  align-self: center;
-  padding: 15px;
-  font-size: 18px;
-}
 
+
+/* 
 .selected img {
   width: 30px; /* Make the image fill the entire width of the span */
   /* height: 30px; /* Make the image fill the entire height of the span 
@@ -253,7 +248,7 @@ ul li span:hover {
   box-sizing: border-box;
 }
 
-table {
+ table {
   border: none;
   border-collapse: collapse;
 }
@@ -290,4 +285,79 @@ th button span {
   color: white;
   margin-top: auto;
   font-size: 10px;
+}
+
+/* For Pokedata */
+
+.type-selector{
+  width: 400px;
+  margin: 0;
+  align-items: start;
+  justify-content: start;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .type-selector table {
+  
+} */
+
+.selected1, .selected2 {
+  border: 2px solid rgb(22, 26, 22);
+}
+
+#pokemon-search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#pokemon-search-form input {
+  display: block;
+  width: 100%;
+  margin-top: 10px; /* Adjust the margin to create space between the table and the input */
+  margin-bottom: 10px;
+}
+
+#pokemon-search-form button[type="submit"] {
+  border-radius: 8px;
+  align-self: flex-end; /* Align button to the end of the form */
+}
+
+.poke-display {
+  width: 70%;
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+}
+
+.poke-display .row{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.poke-display .pokemon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.poke-display .pokemon img{
+  width: 100px;
+  height: 100px;
+}
+
+.poke-display .pokemon .searched{
+  width: 400px;
+  height: 400px;
+}
+
+.poke-display .strength{
+  text-align: center;
+  justify-content: center;
+}
+
+.poke-display .strength table{
+  margin-top: 30px;
 }

@@ -127,7 +127,7 @@ function recordType(index, type) {
     defs_type2 = type;
   }
   console.log(type);
-  console.log(types[type].url);
+  // console.log(types[type].url);
   replaceSelectedBox(type, types[type].url, index)
   // updateSelectedType(type, types[type].url, index);
   refreshEffectiveness();
@@ -151,7 +151,7 @@ function replaceSelectedBox(typeName, imageUrl, index){
     selectedTypeName.style="color: black";
   }
   selectedBox.classList.add(`type-${typeName}`);
-  console.log(selectedBox);
+  // console.log(selectedBox);
 
   // Update the type name text
   selectedTypeName.textContent = typeName;
