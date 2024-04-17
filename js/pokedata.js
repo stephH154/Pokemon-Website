@@ -68,13 +68,46 @@ addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
       const data = await response.json();
-      const pokemonEntries = data.pokemon; // Limit to 6 Pokémon for display
+      const pokemonEntries = data.pokemon; 
 
       displayPokemon(pokemonEntries);
     } catch (error) {
       console.error("Error fetching Pokémon data:", error);
     }
   }
+
+  async function fetchAndFilterPokemon(typeUrl, desiredType) {
+    try {
+        const response = await fetch(typeUrl);
+        const data = await response.json();
+        const pokemonEntries = data.pokemon;
+
+        const filteredPokemon = [];
+
+        // Iterate through each Pokemon entry
+        for (const entry of pokemonEntries) {
+            const pokemonUrl = entry.pokemon.url;
+
+            // Fetch data for each Pokemon
+            const pokemonResponse = await fetch(pokemonUrl);
+            const pokemonData = await pokemonResponse.json();
+
+            // Check if the Pokemon has the desired type
+            const hasDesiredType = pokemonData.types.some(type => type.type.name === desiredType);
+
+            if (hasDesiredType) {
+                filteredPokemon.push(pokemonData);
+            }
+        }
+
+        return filteredPokemon;
+    } catch (error) {
+        console.error('Error fetching and filtering Pokemon:', error);
+        return [];
+    }
+}
+
+
 
   async function getPokemonByName(name) {
     try {
