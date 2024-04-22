@@ -1,8 +1,8 @@
 let default_display;
 let pokeAPI = "https://pokeapi.co/api/v2/";
 let coin = 0;
-let type1 = 'none';
-let type2 = 'none';
+let type1 = "none";
+let type2 = "none";
 const pokemonCache = {};
 
 fetch(`${pokeAPI}pokemon?limit=20&offset=0`)
@@ -39,7 +39,7 @@ addEventListener("DOMContentLoaded", () => {
         selectedBtn1.classList.remove("selected1");
         type1 = "none";
         coin = 0;
-        if(type2){
+        if (type2) {
           getPokemonByType(type2);
         }
         return;
@@ -47,7 +47,7 @@ addEventListener("DOMContentLoaded", () => {
         selectedBtn2.classList.remove("selected2");
         type2 = "none";
         coin = 1;
-        if(type1){
+        if (type1) {
           getPokemonByType(type1);
         }
         return;
@@ -76,46 +76,45 @@ addEventListener("DOMContentLoaded", () => {
   });
 
   async function filter(entries) {
-    if (type1 !== 'none' && type2 !== 'none') {
-        // If both type1 and type2 are selected, display only the Pokémon with these two types
-        const selectedTypes = [type1, type2];
-        
-        // Fetch Pokémon data for each entry and then filter based on types
-        await Promise.all(entries.map(async (entry) => {
-            const pokemonName = entry.pokemon.name;
-            await fetchPokemon(entry, pokemonName); // Fetch Pokémon data
-        }));
+    if (type1 !== "none" && type2 !== "none") {
+      // If both type1 and type2 are selected, display only the Pokémon with these two types
+      const selectedTypes = [type1, type2];
 
-        // Filter the entries based on selected types
-        const filteredEntries = entries.filter(entry => {
-          const pokemon = pokemonCache[entry.pokemon.name];
-          // console.log(`${pokemon.name}: contains? ${checkContainType(pokemon)}`);
-          return checkContainType(pokemon);
+      // Fetch Pokémon data for each entry and then filter based on types
+      await Promise.all(
+        entries.map(async (entry) => {
+          const pokemonName = entry.pokemon.name;
+          await fetchPokemon(entry, pokemonName); // Fetch Pokémon data
+        })
+      );
+
+      // Filter the entries based on selected types
+      const filteredEntries = entries.filter((entry) => {
+        const pokemon = pokemonCache[entry.pokemon.name];
+        // console.log(`${pokemon.name}: contains? ${checkContainType(pokemon)}`);
+        return checkContainType(pokemon);
       });
 
-        return filteredEntries;
+      return filteredEntries;
     } else {
-        // If no types are selected, return all entries
-        return entries;
+      // If no types are selected, return all entries
+      return entries;
     }
-}
+  }
 
-  function checkContainType(pokemon){
-    if(Object.keys(pokemon.type).length === 1){
+  function checkContainType(pokemon) {
+    if (Object.keys(pokemon.type).length === 1) {
       return false;
-    }
-    else{
+    } else {
       // console.log(pokemon.type[0]);
       // console.log(`Type1: ${pokemon.type[0].name}  Type2: ${pokemon.type[1].name}`);
     }
-    if(pokemon.type[0] == type1 && pokemon.type[1] == type2){
+    if (pokemon.type[0] == type1 && pokemon.type[1] == type2) {
       return true;
     }
-    if(pokemon.type[1] == type1 && pokemon.type[0] == type2){
+    if (pokemon.type[1] == type1 && pokemon.type[0] == type2) {
       return true;
-    }
-    else return false;
-
+    } else return false;
   }
 
   // Function to fetch Pokémon data by type from the API
@@ -126,14 +125,13 @@ addEventListener("DOMContentLoaded", () => {
       const pokemonEntries = data.pokemon;
 
       filter(pokemonEntries)
-      .then(filteredEntries => {
-        console.log(filteredEntries); // Access the filtered entries data
-        displayPokemon(filteredEntries); // Pass the filtered entries to the displayPokemon function
-      })
-      .catch(error => {
-        console.error('Error filtering Pokémon entries:', error);
-      });
-    
+        .then((filteredEntries) => {
+          console.log(filteredEntries); // Access the filtered entries data
+          displayPokemon(filteredEntries); // Pass the filtered entries to the displayPokemon function
+        })
+        .catch((error) => {
+          console.error("Error filtering Pokémon entries:", error);
+        });
     } catch (error) {
       console.error("Error fetching Pokémon data:", error);
     }
@@ -237,15 +235,29 @@ addEventListener("DOMContentLoaded", () => {
       } else {
         // If Pokémon data is not in cache, fetch it from the API
         console.log(`Pulling data of ${name}`);
+
         const response = await fetch(`${pokeAPI}pokemon/${name}`);
         const data = await response.json();
+
+        let temp = data.stats[3];
+        data.stats[3] = data.stats[5];
+        data.stats[5] = temp;
+
+        const stats = [
+          { label: "HP", value: data.stats[0]["base_stat"] },
+          { label: "Attack", value: data.stats[1]["base_stat"] },
+          { label: "Defense", value: data.stats[2]["base_stat"] },
+          { label: "Speed", value: data.stats[5]["base_stat"] },
+          { label: "Special Defense", value: data.stats[4]["base_stat"] },
+          { label: "Special Attack", value: data.stats[3]["base_stat"] },
+        ];
 
         // Store data in cache
         pokemonCache[name] = {
           id: data.id,
           name: data.name,
           type: data.types,
-          stats: data.stats, // Store stats in cache for later use
+          stats: stats, // Store stats in cache for later use
           imgURL: data.sprites.other["official-artwork"]["front_default"],
         };
 
@@ -263,6 +275,7 @@ addEventListener("DOMContentLoaded", () => {
     const pokemonElement = document.createElement("div");
     pokemonElement.classList.add("pokemon");
 
+    console.log(`Current Data of ${data.name}`, data.stats);
     // Create image element
     const imgElement = document.createElement("img");
     imgElement.src = data.imgURL;
@@ -281,59 +294,154 @@ addEventListener("DOMContentLoaded", () => {
     // Create strength element
     const pokemonStrength = document.createElement("div");
     pokemonStrength.classList.add("strength");
+    pokemonStrength.style = "width: 300px; height = 300;";
 
     // Create the table element
-    const table = document.createElement("table");
+    // const table = document.createElement("table");
 
     // Create an array to hold the stats and their labels
-    const stats = [
-      { label: "HP", value: data.stats[0]["base_stat"] },
-      { label: "Attack", value: data.stats[1]["base_stat"] },
-      { label: "Defense", value: data.stats[2]["base_stat"] },
-      { label: "Special Attack", value: data.stats[3]["base_stat"] },
-      { label: "Special Defense", value: data.stats[4]["base_stat"] },
-      { label: "Speed", value: data.stats[5]["base_stat"] },
-    ];
 
-    // Create table rows and cells for each stat
-    stats.forEach((stat) => {
-      const row = document.createElement("tr");
-      const labelCell = document.createElement("td");
-      const valueCell = document.createElement("td");
+    const canvas = document.createElement("canvas");
+    canvas.id = "stats-chart";
+    pokemonStrength.appendChild(canvas);
 
-      labelCell.textContent = stat.label;
-      valueCell.textContent = stat.value;
+    // pokeDisplay.appendChild(pokemonElement);
+    // pokeDisplay.appendChild(pokemonStrength);
 
-      row.appendChild(labelCell);
-      row.appendChild(valueCell);
-
-      table.appendChild(row);
+    const labels = data.stats.map((stat) => stat.label + `\n ${stat.value}`);
+    const dataValues = data.stats.map((stat) => stat.value);
+    // Create a Chart.js radar chart
+    new Chart(canvas, {
+      type: "radar",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Stats + Value",
+            data: dataValues,
+            backgroundColor: "rgba(255, 99, 132, 0.7)",
+            borderColor: "rgba(255, 255, 255, 1)",
+            borderWidth: 1,
+            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(255, 99, 132)",
+          },
+        ],
+      },
+      options: {
+        scales: {
+          r: {
+            pointLabels: {
+              font: {
+                size: 18,
+              },
+            },
+            outerHeight: 400,
+            outerWidth: 400,
+            min: 0,
+            max: 150,
+            ticks: {
+              stepSize: 30,
+            },
+          },
+        },
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              return context.dataset.label + ": " + context.formattedValue; // Display label and value
+            },
+          },
+        },
+        formatter: function (value, context) {
+          return context.chart.data.labels[context.value];
+        },
+      },
     });
-
-    // Calculate total strength
-    const totalStrength = data.stats.reduce(
-      (acc, curr) => acc + curr.base_stat,
-      0
-    );
-    const totalRow = document.createElement("tr");
-    const totalLabelCell = document.createElement("td");
-    const totalValueCell = document.createElement("td");
-
-    totalLabelCell.textContent = "Total Strength";
-    totalValueCell.textContent = totalStrength;
-
-    totalRow.appendChild(totalLabelCell);
-    totalRow.appendChild(totalValueCell);
-
-    table.appendChild(totalRow);
-
-    // Append the table to the strength element
-    pokemonStrength.appendChild(table);
-
-    // Append pokemonElement and strength element to the display
     pokeDisplay.appendChild(pokemonElement);
     pokeDisplay.appendChild(pokemonStrength);
   }
+
+  // function displayPokemonbyName(data) {
+  //   const pokeDisplay = document.querySelector(".poke-display");
+  //   pokeDisplay.innerHTML = ""; // Clear previous content
+
+  //   const pokemonElement = document.createElement("div");
+  //   pokemonElement.classList.add("pokemon");
+
+  //   // Create image element
+  //   const imgElement = document.createElement("img");
+  //   imgElement.src = data.imgURL;
+  //   imgElement.alt = data.name;
+  //   imgElement.classList.add("searched");
+
+  //   // Create info element
+  //   const infoElement = document.createElement("div");
+  //   infoElement.classList.add("info");
+  //   infoElement.textContent = data.name;
+
+  //   // Append image and info elements to pokemonElement
+  //   pokemonElement.appendChild(imgElement);
+  //   pokemonElement.appendChild(infoElement);
+
+  //   // Create strength element
+  //   const pokemonStrength = document.createElement("div");
+  //   pokemonStrength.classList.add("strength");
+
+  //   // Create the table element
+  //   const table = document.createElement("table");
+
+  //   // Create an array to hold the stats and their labels
+  //   const stats = [
+  //     { label: "HP", value: data.stats[0]["base_stat"] },
+  //     { label: "Attack", value: data.stats[1]["base_stat"] },
+  //     { label: "Defense", value: data.stats[2]["base_stat"] },
+  //     { label: "Special Attack", value: data.stats[3]["base_stat"] },
+  //     { label: "Special Defense", value: data.stats[4]["base_stat"] },
+  //     { label: "Speed", value: data.stats[5]["base_stat"] },
+  //   ];
+
+  //   // Create table rows and cells for each stat
+  //   stats.forEach((stat) => {
+  //     const row = document.createElement("tr");
+  //     const labelCell = document.createElement("td");
+  //     const valueCell = document.createElement("td");
+
+  //     labelCell.textContent = stat.label;
+  //     valueCell.textContent = stat.value;
+
+  //     row.appendChild(labelCell);
+  //     row.appendChild(valueCell);
+
+  //     table.appendChild(row);
+  //   });
+
+  //   // Calculate total strength
+  //   const totalStrength = data.stats.reduce(
+  //     (acc, curr) => acc + curr.base_stat,
+  //     0
+  //   );
+  //   const totalRow = document.createElement("tr");
+  //   const totalLabelCell = document.createElement("td");
+  //   const totalValueCell = document.createElement("td");
+
+  //   totalLabelCell.textContent = "Total Strength";
+  //   totalValueCell.textContent = totalStrength;
+
+  //   totalRow.appendChild(totalLabelCell);
+  //   totalRow.appendChild(totalValueCell);
+
+  //   table.appendChild(totalRow);
+
+  //   // Append the table to the strength element
+  //   pokemonStrength.appendChild(table);
+
+  //   // Append pokemonElement and strength element to the display
+  //   pokeDisplay.appendChild(pokemonElement);
+  //   pokeDisplay.appendChild(pokemonStrength);
+  // }
 
   async function fetchPokemon(entry, pokemonName) {
     if (pokemonCache[pokemonName]) {
@@ -345,6 +453,10 @@ addEventListener("DOMContentLoaded", () => {
 
       let imageURL;
       imageURL = data.sprites.other["official-artwork"]["front_default"]; // Extract imageURL from fetched data
+
+      let temp = data.stats[3];
+      data.stats[3] = data.stats[5];
+      data.stats[5] = temp;
 
       // Store data in cache
       pokemonCache[pokemonName] = {
