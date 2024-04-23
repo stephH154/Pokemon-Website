@@ -1,3 +1,120 @@
+const types = {
+  none:{
+    strong: [],
+    weak: [],
+    immune: [],
+    url: "../imgs/icons/Empty.png",
+  },
+  normal: {
+    strong: [],
+    weak: ["rock", "steel"],
+    immune: ["ghost"],
+    url: "//archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/20px-Normal_icon.png",
+  },
+  fire: {
+    strong: ["grass", "ice", "bug", "steel"],
+    weak: ["fire", "water", "rock", "dragon"],
+    immune: [],
+    url: "//archives.bulbagarden.net/media/upload/thumb/5/5e/Fire_icon.png/20px-Fire_icon.png",
+  },
+  water: {
+    strong: ["fire", "ground", "rock"],
+    weak: ["water", "grass", "dragon"],
+    immune: [],
+    url: "//archives.bulbagarden.net/media/upload/thumb/7/7f/Water_icon.png/20px-Water_icon.png",
+  },
+  electric: {
+    strong: ["water", "flying"],
+    weak: ["electric", "grass", "dragon"],
+    immune: ["ground"],
+    url: "//archives.bulbagarden.net/media/upload/thumb/a/af/Electric_icon.png/20px-Electric_icon.png",
+  },
+  grass: {
+    strong: ["water", "ground", "rock"],
+    weak: ["fire", "grass", "poison", "flying", "bug", "dragon", "steel"],
+    immune: [],
+    url: "//archives.bulbagarden.net/media/upload/thumb/c/cb/Grass_icon.png/20px-Grass_icon.png",
+  },
+  ice: {
+    strong: ["grass", "ground", "flying", "dragon"],
+    weak: ["fire", "water", "ice", "steel"],
+    immune: [],
+    url: "//archives.bulbagarden.net/media/upload/thumb/8/83/Ice_icon.png/20px-Ice_icon.png",
+  },
+  fighting: {
+    strong: ["normal", "ice", "rock", "dark", "steel"],
+    weak: ["poison", "flying", "psychic", "bug", "fairy"],
+    immune: ["ghost"],
+    url: "//archives.bulbagarden.net/media/upload/thumb/7/7d/Fighting_icon.png/20px-Fighting_icon.png",
+  },
+  poison: {
+    strong: ["grass", "fairy"],
+    weak: ["poison", "ground", "rock", "ghost"],
+    immune: ["steel"],
+    url: "//archives.bulbagarden.net/media/upload/thumb/8/84/Poison_icon.png/20px-Poison_icon.png",
+  },
+  ground: {
+    strong: ["fire", "electric", "poison", "rock", "steel"],
+    weak: ["grass", "bug"],
+    immune: ["flying"],
+    url: "//archives.bulbagarden.net/media/upload/thumb/5/58/Ground_icon.png/20px-Ground_icon.png",
+  },
+  flying: {
+    strong: ["grass", "fighting", "bug"],
+    weak: ["electric", "rock", "steel"],
+    immune: [],
+    url: "//archives.bulbagarden.net/media/upload/thumb/f/f0/Flying_icon.png/20px-Flying_icon.png",
+  },
+  psychic: {
+    strong: ["fighting", "poison"],
+    weak: ["psychic", "steel"],
+    immune: ["dark"],
+    url: "//archives.bulbagarden.net/media/upload/thumb/a/a6/Psychic_icon.png/20px-Psychic_icon.png",
+  },
+  bug: {
+    strong: ["grass", "psychic", "dark"],
+    weak: ["fire", "fighting", "poison", "flying", "ghost", "steel", "fairy"],
+    immune: [],
+    url: "//archives.bulbagarden.net/media/upload/thumb/7/79/Bug_icon.png/20px-Bug_icon.png",
+  },
+  rock: {
+    strong: ["fire", "ice", "flying", "bug"],
+    weak: ["fighting", "ground", "steel"],
+    immune: [],
+    url: "//archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/20px-Rock_icon.png",
+  },
+  ghost: {
+    strong: ["psychic", "ghost"],
+    weak: ["dark"],
+    immune: ["normal"],
+    url: "//archives.bulbagarden.net/media/upload/thumb/8/82/Ghost_icon.png/20px-Ghost_icon.png",
+  },
+  dragon: {
+    strong: ["dragon"],
+    weak: ["steel"],
+    immune: ["fairy"],
+    url: "//archives.bulbagarden.net/media/upload/thumb/9/91/Dragon_icon.png/20px-Dragon_icon.png",
+  },
+  dark: {
+    strong: ["psychic", "ghost"],
+    weak: ["fighting", "dark", "fairy"],
+    immune: [],
+    url: "//archives.bulbagarden.net/media/upload/thumb/3/33/Dark_icon.png/20px-Dark_icon.png",
+  },
+  steel: {
+    strong: ["ice", "rock", "fairy"],
+    weak: ["fire", "water", "electric", "steel"],
+    immune: ["poison"],
+    url: "//archives.bulbagarden.net/media/upload/thumb/b/b8/Steel_icon.png/20px-Steel_icon.png",
+  },
+  fairy: {
+    strong: ["fighting", "dragon", "dark"],
+    weak: ["fire", "poison", "steel"],
+    immune: [],
+    url: "//archives.bulbagarden.net/media/upload/thumb/5/5a/Fairy_icon.png/20px-Fairy_icon.png",
+  },
+};
+
 let default_display;
 let pokeAPI = "https://pokeapi.co/api/v2/";
 let coin = 0;
@@ -11,7 +128,6 @@ function nowCached() {
 }
 
 addEventListener("DOMContentLoaded", () => {
-  
   const type_sel = document.querySelectorAll(".type-selector table button");
 
   type_sel.forEach((btn) => {
@@ -294,6 +410,33 @@ addEventListener("DOMContentLoaded", () => {
     // Create the table element
     // const table = document.createElement("table");
 
+
+    const typesContainer = document.createElement("div");
+    typesContainer.classList.add("types-container");
+
+    // Iterate over each type of the Pokémon
+    data.type.forEach((type) => {
+        // Create image element for the type
+
+        const cont = document.createElement("div");
+        cont.classList.add("cont");
+        cont.classList.add(`type-${type}`);
+        const typeImg = document.createElement("img");
+        typeImg.src = `../imgs/icons/${type}.svg`; // Replace 'path_to_type_image' with the actual path to your type images
+        typeImg.alt = type;
+        typeImg.classList.add("type-img");
+
+        const typeName = document.createElement("span");
+        typeName.innerHTML = type;
+        
+
+        // Append type image to typesContainer
+        cont.appendChild(typeImg);
+        cont.appendChild(typeName);
+        typesContainer.appendChild(cont);
+    });
+
+    pokemonStrength.appendChild(typesContainer);
     // Create an array to hold the stats and their labels
 
     const canvas = document.createElement("canvas");

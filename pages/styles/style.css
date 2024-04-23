@@ -6,20 +6,20 @@
 }
 
 body {
-  background-color: #f5f5dc ;
+  background-color: #f5f5dc;
 }
 
 /* All Container */
 .container {
   /* border: 1px solid #000000; */
-  width: 30%; 
+  width: 30%;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   align-items: stretch;
 }
 
-.container > *{
+.container > * {
   flex-grow: 1;
 }
 
@@ -67,7 +67,7 @@ ul span img {
   position: relative;
   width: 15px; /* Make the image fill the entire width of the span */
   height: 15px; /* Make the image fill the entire height of the span */
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 ul li span:hover {
@@ -75,8 +75,6 @@ ul li span:hover {
   margin: 0.7em 0;
   cursor: pointer;
 }
-
-
 
 .t-type {
   border-style: solid none;
@@ -107,13 +105,11 @@ ul li span:hover {
   text-shadow: 0 1px 1px #807870;
 }
 
-
-
 /* 
 .selected img {
   width: 30px; /* Make the image fill the entire width of the span */
-  /* height: 30px; /* Make the image fill the entire height of the span 
-} */ 
+/* height: 30px; /* Make the image fill the entire height of the span 
+} */
 
 /* Effectiveness */
 .effectiveness {
@@ -129,7 +125,7 @@ ul li span:hover {
   height: 594.2;
 }
 
-.arrow{
+.arrow {
   align-self: center;
 }
 
@@ -195,8 +191,6 @@ ul li span:hover {
   color: white;
 }
 
-
-
 /* Defense */
 
 .defense {
@@ -212,12 +206,12 @@ ul li span:hover {
   height: 100px;
 }
 
-.defense .types{
+.defense .types {
   text-align: center;
   justify-content: center;
 }
 
-.defense .types .btn-type{
+.defense .types .btn-type {
   border-radius: 10px;
   color: black;
   width: 100px;
@@ -248,7 +242,7 @@ ul li span:hover {
   box-sizing: border-box;
 }
 
- table {
+table {
   border: none;
   border-collapse: collapse;
 }
@@ -276,7 +270,7 @@ th button {
 th button img {
   position: relative;
   top: 5px;
-  width: 80%; 
+  width: 80%;
   height: auto;
   margin-bottom: 2px; /* Added margin between image and text */
 }
@@ -289,7 +283,7 @@ th button span {
 
 /* For Pokedata */
 
-.type-selector{
+.type-selector {
   width: 400px;
   margin: 0;
   align-items: start;
@@ -302,7 +296,8 @@ th button span {
   
 } */
 
-.selected1, .selected2 {
+.selected1,
+.selected2 {
   border: 2px solid rgb(22, 26, 22);
 }
 
@@ -331,7 +326,7 @@ th button span {
   display: flex;
 }
 
-.poke-display .row{
+.poke-display .row {
   display: flex;
   flex-wrap: wrap;
 }
@@ -343,21 +338,53 @@ th button span {
   /* justify-content: center; */
 }
 
-.poke-display .pokemon img{
+.poke-display .pokemon img {
   width: 100px;
   height: 100px;
 }
 
-.poke-display .pokemon .searched{
+.poke-display .pokemon .searched {
   width: 400px;
   height: 400px;
 }
 
-.poke-display .strength{
+.poke-display .strength {
   text-align: center;
   justify-content: center;
 }
 
-.poke-display .strength table{
+.poke-display .strength table {
   margin-top: 30px;
+}
+
+.types-container {
+  display: row;
+}
+
+
+
+.types-container .cont {
+  border: none;
+  border-radius: 10px;
+  width: 84px; /* Adjusted width */
+  height: 84px; /* Adjusted height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px; /* Adjusted padding */
+}
+
+.type-img {
+  position: relative;
+  top: 10px;
+  width: 80%;
+  height: auto;
+  padding-bottom: 10px;
+}
+
+.cont span {
+  color: white;
+  margin-top: auto;
+  font-size: 15px;
 }
