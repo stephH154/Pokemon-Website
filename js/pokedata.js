@@ -5,18 +5,13 @@ let type1 = "none";
 let type2 = "none";
 const pokemonCache = {};
 
-fetch(`${pokeAPI}pokemon?limit=20&offset=0`)
-  .then((response) => response.json())
-  .then((data) => {
-    default_display = data;
-    console.log(default_display.results);
-  });
 
 function nowCached() {
   console.log("now cached: ", pokemonCache);
 }
 
 addEventListener("DOMContentLoaded", () => {
+  
   const type_sel = document.querySelectorAll(".type-selector table button");
 
   type_sel.forEach((btn) => {
@@ -494,6 +489,67 @@ addEventListener("DOMContentLoaded", () => {
 
         const pokemonElement = document.createElement("div");
         pokemonElement.classList.add("pokemon");
+
+        let hoverTimeout; // Variable to hold the timeout
+
+        // Event listtener for click
+        pokemonElement.addEventListener("click", function(event) {
+          const searchBar = document.getElementById("input-pokemon");
+          searchBar.value = pokemonName;
+        });
+
+        // Add event listener for hover
+        pokemonElement.addEventListener("mouseenter", function (event) {
+          // Set a timeout to show the side display after 500 milliseconds (adjust as needed)
+          hoverTimeout = setTimeout(() => {
+            // Create and position side display
+            console.log(`Hovering ${pokemonName}`);
+
+            const sideDisplay = document.createElement("div");
+            sideDisplay.classList.add("side-display");
+            // sideDisplay.textContent = pokemonName;
+            // Position side display next to the hovered Pokémon
+            sideDisplay.style.left =
+              pokemonElement.offsetLeft + pokemonElement.offsetWidth + "px";
+            sideDisplay.style.top = pokemonElement.offsetTop + "px";
+            sideDisplay.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+            sideDisplay.style.color = "white";
+            sideDisplay.style.border = "1px white";
+            sideDisplay.style.position = "absolute";
+
+            // Create the table element
+            const table = document.createElement("table");
+            const stats = pokemonCache[pokemonName].stats;
+            // Create table rows and cells for each stat
+            stats.forEach((stat) => {
+              const row = document.createElement("tr");
+              const labelCell = document.createElement("td");
+              const valueCell = document.createElement("td");
+
+              labelCell.textContent = stat.label;
+              valueCell.textContent = stat.value;
+
+              row.appendChild(labelCell);
+              row.appendChild(valueCell);
+
+              table.appendChild(row);
+            });
+
+            // Append the table to the strength element
+            sideDisplay.appendChild(table);
+
+            // Append side display to the pokeDisplay
+            pokemonElement.appendChild(sideDisplay);
+          }, 500);
+        });
+
+        pokemonElement.addEventListener("mouseleave", function (event) {
+          // Clear the timeout when the mouse leaves the Pokémon element
+          clearTimeout(hoverTimeout);
+          // Remove side display if it's already shown
+          const sideDisplay = document.querySelector(".side-display");
+          if (sideDisplay) sideDisplay.remove();
+        });
 
         // Create image element
         let imageURL = "";
