@@ -157,6 +157,10 @@ ul li span:hover {
   height: 594.2px;
 }
 
+.d-choose:hover{
+  cursor: not-allowed;
+}
+
 .d-choose-content {
   display: flex;
   flex-direction: column;
