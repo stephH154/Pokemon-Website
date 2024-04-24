@@ -1,5 +1,5 @@
 const types = {
-  none:{
+  none: {
     strong: [],
     weak: [],
     immune: [],
@@ -115,13 +115,20 @@ const types = {
   },
 };
 
+for (const type in types) {
+  if (type !== "none") {
+    types[type].url = `../imgs/icons/${type}.svg`; // Update URL to use SVG image
+  }
+}
+
+console.log(types);
+
 let default_display;
 let pokeAPI = "https://pokeapi.co/api/v2/";
 let coin = 0;
 let type1 = "none";
 let type2 = "none";
 const pokemonCache = {};
-
 
 function nowCached() {
   console.log("now cached: ", pokemonCache);
@@ -184,7 +191,29 @@ addEventListener("DOMContentLoaded", () => {
         coin = !coin;
       }
     });
+    btn.addEventListener("dblclick", (event) => {
+      resetTypes(btn.value);
+    });
   });
+
+  function resetTypes(type) {
+    if (type == type1 || type == type2) {
+      const selectedBtn1 = document.querySelector(
+        ".type-selector table .selected1"
+      );
+      const selectedBtn2 = document.querySelector(
+        ".type-selector table .selected2"
+      );
+      console.log("hello");
+      selectedBtn1.classList.remove("selected1");
+      type1 = "none";
+      selectedBtn2.classList.remove("selected2");
+      type2 = "none";
+      coin = 0;
+    } else {
+      return;
+    }
+  }
 
   async function filter(entries) {
     if (type1 !== "none" && type2 !== "none") {
@@ -410,30 +439,28 @@ addEventListener("DOMContentLoaded", () => {
     // Create the table element
     // const table = document.createElement("table");
 
-
     const typesContainer = document.createElement("div");
     typesContainer.classList.add("types-container");
 
     // Iterate over each type of the Pokémon
     data.type.forEach((type) => {
-        // Create image element for the type
+      // Create image element for the type
 
-        const cont = document.createElement("div");
-        cont.classList.add("cont");
-        cont.classList.add(`type-${type}`);
-        const typeImg = document.createElement("img");
-        typeImg.src = `../imgs/icons/${type}.svg`; // Replace 'path_to_type_image' with the actual path to your type images
-        typeImg.alt = type;
-        typeImg.classList.add("type-img");
+      const cont = document.createElement("div");
+      cont.classList.add("cont");
+      cont.classList.add(`type-${type}`);
+      const typeImg = document.createElement("img");
+      typeImg.src = `../imgs/icons/${type}.svg`; // Replace 'path_to_type_image' with the actual path to your type images
+      typeImg.alt = type;
+      typeImg.classList.add("type-img");
 
-        const typeName = document.createElement("span");
-        typeName.innerHTML = type;
-        
+      const typeName = document.createElement("span");
+      typeName.innerHTML = type;
 
-        // Append type image to typesContainer
-        cont.appendChild(typeImg);
-        cont.appendChild(typeName);
-        typesContainer.appendChild(cont);
+      // Append type image to typesContainer
+      cont.appendChild(typeImg);
+      cont.appendChild(typeName);
+      typesContainer.appendChild(cont);
     });
 
     pokemonStrength.appendChild(typesContainer);
@@ -468,7 +495,7 @@ addEventListener("DOMContentLoaded", () => {
           r: {
             pointLabels: {
               font: {
-                size: 18,
+                size: 15,
               },
             },
             outerHeight: 400,
@@ -636,7 +663,7 @@ addEventListener("DOMContentLoaded", () => {
         let hoverTimeout; // Variable to hold the timeout
 
         // Event listtener for click
-        pokemonElement.addEventListener("click", function(event) {
+        pokemonElement.addEventListener("click", function (event) {
           const searchBar = document.getElementById("input-pokemon");
           searchBar.value = pokemonName;
         });
@@ -653,8 +680,14 @@ addEventListener("DOMContentLoaded", () => {
             // sideDisplay.textContent = pokemonName;
             // Position side display next to the hovered Pokémon
             sideDisplay.style.left =
-              pokemonElement.offsetLeft + pokemonElement.offsetWidth + "px";
-            sideDisplay.style.top = pokemonElement.offsetTop + "px";
+            
+              (425 + pokemonElement.getBoundingClientRect().right) -
+              pokeDisplay.getBoundingClientRect().left +
+              "px";
+            sideDisplay.style.top =
+              (70 + pokemonElement.getBoundingClientRect().top) -
+              pokeDisplay.getBoundingClientRect().top +
+              "px";
             sideDisplay.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
             sideDisplay.style.color = "white";
             sideDisplay.style.border = "1px white";

@@ -270,8 +270,8 @@ th button {
 th button img {
   position: relative;
   top: 5px;
-  width: 80%;
-  height: auto;
+  width: 70%;
+  height: 70%;
   margin-bottom: 2px; /* Added margin between image and text */
 }
 
@@ -358,7 +358,8 @@ th button span {
 }
 
 .types-container {
-  display: row;
+  display: flex;
+  flex-direction: row ;
 }
 
 
@@ -366,25 +367,29 @@ th button span {
 .types-container .cont {
   border: none;
   border-radius: 10px;
-  width: 84px; /* Adjusted width */
-  height: 84px; /* Adjusted height */
+  width: 50px; /* Adjusted width */
+  height: 50px; /* Adjusted height */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   padding: 5px; /* Adjusted padding */
+  margin-bottom: 8px;
+  margin-right: 20px;
 }
 
 .type-img {
   position: relative;
   top: 10px;
-  width: 80%;
-  height: auto;
+  width: 35px;
+  height: 35px;
   padding-bottom: 10px;
 }
 
 .cont span {
   color: white;
   margin-top: auto;
-  font-size: 15px;
+  margin-bottom: 0;
+  padding: 0;
+  font-size: 12px;
 }

@@ -115,6 +115,12 @@ const types = {
   },
 };
 
+for (const type in types) {
+  if (type !== "none") {
+    types[type].url = `../imgs/icons/${type}.svg`; // Update URL to use SVG image
+  }
+}
+
 // Variables for effectiveness calculation
 let attk_type = "normal";
 let defs_type1;
