@@ -129,9 +129,26 @@ let coin = 0;
 let type1 = "none";
 let type2 = "none";
 const pokemonCache = {};
+let onHandPokemon;
+let selectedTeamSlot;
 
 function nowCached() {
   console.log("now cached: ", pokemonCache);
+}
+
+// Function to add pokemon to the team
+async function addToTeam(teamName) {
+  try {
+    const teamTable = document.querySelector(`.${teamName} table`);
+    const emptyRow = teamTable.querySelector("th:empty");
+    if (emptyRow) {
+      emptyRow.textContent = onHandPokemon; // Replace the empty row with the Pokémon name
+    } else {
+      console.log("Team is full!"); // Display a message if the team is full
+    }
+  } catch (err) {
+    alert('No Pokemon is selected yet');
+  }
 }
 
 addEventListener("DOMContentLoaded", () => {
@@ -204,7 +221,7 @@ addEventListener("DOMContentLoaded", () => {
       const selectedBtn2 = document.querySelector(
         ".type-selector table .selected2"
       );
-      console.log("hello");
+
       selectedBtn1.classList.remove("selected1");
       type1 = "none";
       selectedBtn2.classList.remove("selected2");
@@ -379,10 +396,6 @@ addEventListener("DOMContentLoaded", () => {
         const response = await fetch(`${pokeAPI}pokemon/${name}`);
         const data = await response.json();
 
-        let temp = data.stats[3];
-        data.stats[3] = data.stats[5];
-        data.stats[5] = temp;
-
         const stats = [
           { label: "HP", value: data.stats[0]["base_stat"] },
           { label: "Attack", value: data.stats[1]["base_stat"] },
@@ -400,6 +413,8 @@ addEventListener("DOMContentLoaded", () => {
           stats: stats, // Store stats in cache for later use
           imgURL: data.sprites.other["official-artwork"]["front_default"],
         };
+
+        onHandPokemon = data.name;
 
         displayPokemonbyName(pokemonCache[name]); // Display the Pokémon using fetched data
       }
@@ -666,6 +681,7 @@ addEventListener("DOMContentLoaded", () => {
         pokemonElement.addEventListener("click", function (event) {
           const searchBar = document.getElementById("input-pokemon");
           searchBar.value = pokemonName;
+          onHandPokemon = pokemonName;
         });
 
         // Add event listener for hover
@@ -680,12 +696,13 @@ addEventListener("DOMContentLoaded", () => {
             // sideDisplay.textContent = pokemonName;
             // Position side display next to the hovered Pokémon
             sideDisplay.style.left =
-            
-              (425 + pokemonElement.getBoundingClientRect().right) -
+              425 +
+              pokemonElement.getBoundingClientRect().right -
               pokeDisplay.getBoundingClientRect().left +
               "px";
             sideDisplay.style.top =
-              (70 + pokemonElement.getBoundingClientRect().top) -
+              70 +
+              pokemonElement.getBoundingClientRect().top -
               pokeDisplay.getBoundingClientRect().top +
               "px";
             sideDisplay.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
