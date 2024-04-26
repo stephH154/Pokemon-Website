@@ -142,14 +142,87 @@ async function addToTeam(teamName) {
     const teamTable = document.querySelector(`.${teamName} table`);
     const emptyRow = teamTable.querySelector("th:empty");
     if (emptyRow) {
-      emptyRow.textContent = onHandPokemon; // Replace the empty row with the Pokémon name
+      const rowCell = document.createElement("div");
+      rowCell.classList.add("row-cell");
+      const img = document.createElement("img");
+      img.src = pokemonCache[onHandPokemon].imgURL;
+      const span = document.createElement("span");
+      span.innerHTML = onHandPokemon;
+
+      const typesContainer = document.createElement("div");
+      typesContainer.classList.add("types-container");
+
+      // Iterate over each type of the Pokémon
+      pokemonCache[onHandPokemon].type.forEach((type) => {
+        // Create image element for the type
+
+        const cont = document.createElement("div");
+        cont.classList.add("cont");
+        cont.classList.add(`type-${type}`);
+        const typeImg = document.createElement("img");
+        typeImg.src = `../imgs/icons/${type}.svg`; // Replace 'path_to_type_image' with the actual path to your type images
+        typeImg.alt = type;
+        typeImg.classList.add("type-img");
+
+        // Append type image to typesContainer
+        cont.appendChild(typeImg);
+        typesContainer.appendChild(cont);
+      });
+
+      
+      rowCell.appendChild(img);
+      rowCell.appendChild(typesContainer);
+      // rowCell.appendChild(span);
+      emptyRow.appendChild(rowCell);
+
+    } else if (selectedTeamSlot  && selectedTeamSlot.classList[0] == teamName.substring(0,2)) {
+      selectedTeamSlot.innerHTML = "";
+      const rowCell = document.createElement("div");
+      rowCell.classList.add("row-cell");
+      const img = document.createElement("img");
+      img.src = pokemonCache[onHandPokemon].imgURL;
+      const span = document.createElement("span");
+      span.innerHTML = onHandPokemon;
+
+      const typesContainer = document.createElement("div");
+      typesContainer.classList.add("types-container");
+
+      // Iterate over each type of the Pokémon
+      pokemonCache[onHandPokemon].type.forEach((type) => {
+        // Create image element for the type
+
+        const cont = document.createElement("div");
+        cont.classList.add("cont");
+        cont.classList.add(`type-${type}`);
+        const typeImg = document.createElement("img");
+        typeImg.src = `../imgs/icons/${type}.svg`; // Replace 'path_to_type_image' with the actual path to your type images
+        typeImg.alt = type;
+        typeImg.classList.add("type-img");
+
+        // Append type image to typesContainer
+        cont.appendChild(typeImg);
+        typesContainer.appendChild(cont);
+      });
+
+      
+      rowCell.appendChild(img);
+      rowCell.appendChild(typesContainer);
+      // rowCell.appendChild(span);
+      selectedTeamSlot.appendChild(rowCell);
     } else {
       console.log("Team is full!"); // Display a message if the team is full
     }
   } catch (err) {
-    alert('No Pokemon is selected yet');
+    console.log(err);
+    alert("No Pokemon is selected yet");
   }
 }
+
+document.querySelectorAll(".myteam th, .enemy th").forEach((slot) => {
+  slot.addEventListener("click", () => {
+    selectedTeamSlot = slot;
+  });
+});
 
 addEventListener("DOMContentLoaded", () => {
   const type_sel = document.querySelectorAll(".type-selector table button");

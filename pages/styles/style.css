@@ -364,6 +364,7 @@ th button span {
 .types-container {
   display: flex;
   flex-direction: row ;
+  align-items: center;
 }
 
 .team-builder {
@@ -378,9 +379,25 @@ th button span {
 }
 
 .team-builder div{
+  width: 45%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+}
+
+.team-builder th{
+  border-bottom: 1px solid;
+}
+
+.team-builder th .row-cell{
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+.team-builder th img{
+  width: 50%;
 }
 
 .types-container .cont {
@@ -395,6 +412,27 @@ th button span {
   padding: 5px; /* Adjusted padding */
   margin-bottom: 8px;
   margin-right: 20px;
+}
+
+.row-cell .types-container .cont {
+  border: none;
+  border-radius: 10px;
+  width: 30px; /* Adjusted width */
+  height: 30px; /* Adjusted height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px; /* Adjusted padding */
+  margin-bottom: 8px;
+}
+
+.row-cell .cont img{
+  position: relative;
+  width: 100%;
+    top: 10px;
+    margin-top: 3px;
+    margin-bottom: 2px;
 }
 
 .type-img {
