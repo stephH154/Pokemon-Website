@@ -131,10 +131,22 @@ let type2 = "none";
 const pokemonCache = {};
 let onHandPokemon;
 let selectedTeamSlot;
+let myTeam = [];
+let enemyTeam = [];
 
 function nowCached() {
   console.log("now cached: ", pokemonCache);
 }
+
+// Function to redirect to the PvP calculator page with team data as URL parameters
+function redirectToPvPCalculator() {
+  const myTeamString = JSON.stringify(myTeam);
+  const enemyTeamString = JSON.stringify(enemyTeam);
+  const queryString = `?myTeam=${encodeURIComponent(myTeamString)}&enemyTeam=${encodeURIComponent(enemyTeamString)}`;
+  const pvpLink = document.getElementById('pvpLink');
+  pvpLink.href = `pvpcalculator.html${queryString}`;
+}
+
 
 // Function to add pokemon to the team
 async function addToTeam(teamName) {
@@ -169,13 +181,30 @@ async function addToTeam(teamName) {
         typesContainer.appendChild(cont);
       });
 
-      
       rowCell.appendChild(img);
       rowCell.appendChild(typesContainer);
       // rowCell.appendChild(span);
       emptyRow.appendChild(rowCell);
 
-    } else if (selectedTeamSlot  && selectedTeamSlot.classList[0] == teamName.substring(0,2)) {
+      if ((teamName === "myteam")) {
+        myTeam.push(onHandPokemon);
+      } else if(teamName === "enemy"){
+        enemyTeam.push(onHandPokemon);
+      }
+      localStorage.setItem('pokemonCache', JSON.stringify(pokemonCache));
+      redirectToPvPCalculator();
+    } else if (
+      selectedTeamSlot &&
+      selectedTeamSlot.classList[0] == teamName.substring(0, 2)
+    ) {
+      let index = selectedTeamSlot.classList[1].substring(5);
+      if (teamName === "myteam") {
+        myTeam[index] = onHandPokemon;
+      } else if(teamName === "enemy"){
+        enemyTeam[index] = onHandPokemon;
+      }
+      redirectToPvPCalculator();
+
       selectedTeamSlot.innerHTML = "";
       const rowCell = document.createElement("div");
       rowCell.classList.add("row-cell");
@@ -204,11 +233,13 @@ async function addToTeam(teamName) {
         typesContainer.appendChild(cont);
       });
 
-      
       rowCell.appendChild(img);
       rowCell.appendChild(typesContainer);
       // rowCell.appendChild(span);
       selectedTeamSlot.appendChild(rowCell);
+      localStorage.setItem('pokemonCache', JSON.stringify(pokemonCache));
+
+     
     } else {
       console.log("Team is full!"); // Display a message if the team is full
     }
