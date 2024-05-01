@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -23,86 +23,102 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>PvP Calculator</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav
-          class="navbar navbar-expand-lg navbar-light"
-          style="
-            background-color: rgb(216, 214, 151);
-            margin-bottom: 20px;
-            height: 60px;
-          "
+      <nav
+        class="navbar navbar-expand-lg navbar-light"
+        style="
+          background-color: rgb(216, 214, 151);
+          margin-bottom: 20px;
+          height: 60px;
+        "
+      >
+        <a class="navbar-brand" href="#" style="margin-left: 20px"
+          >Poke'Helper</a
         >
-          <a class="navbar-brand" href="#" style="margin-left: 20px"
-            >Poke'Helper</a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div
-            class="collapse navbar-collapse"
-            id="navbarNav"
-            style="justify-content: end"
-          >
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">Type chart</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="pokemondata.html">Pokemon data</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pvpLink" href="#">PvP calculator</a>
-              </li>
-              <!-- <li class="nav-item">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse"
+          id="navbarNav"
+          style="justify-content: end"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Type chart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pokemondata.html">Pokemon data</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pvpLink" href="#">PvP calculator</a>
+            </li>
+            <!-- <li class="nav-item">
                   <a class="nav-link disabled" href="#">Disabled</a>
                 </li> -->
-            </ul>
-          </div>
-        </nav>
-      </header>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <!-- <h1>PvP Calculator</h1> -->
     <div class="main-body">
-        <div class="my-team">
-            <div class="select-member">
-                <!-- This container will hold the selectable team members -->
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-            </div>
-            <div class="current-member">
-                <div class="member-info">
-                    <div class="name">Member Name</div>
-                    <div class="types">Type 1, Type 2</div>
-                    <div class="image">
-                        <!-- Member image goes here -->
-                    </div>
-                    <div class="stats">
-                        <!-- Member stats go here -->
-                    </div>
-                    <div class="skills">
-                        <!-- Member skills go here -->
-                    </div>
-                </div>
-            </div>
+      <div class="my-team">
+        <div class="select-member">
+          <!-- This container will hold the selectable team members -->
+          <button onclick="displayMyTeam(0)"><img src="" alt="" id="my-1"></button>
+          <button onclick="displayMyTeam(1)"><img src="" alt="" id="my-2"></button>
+          <button onclick="displayMyTeam(2)"><img src="" alt="" id="my-3"></button>
         </div>
-        
-        <div class="enemy-team container">
-            <div class="enemy-member" id="enemy-1"></div>
-            <div class="enemy-member" id="enemy-2"></div>
-            <div class="enemy-member" id="enemy-3"></div>
+        <div class="current-member">
+          <div class="name-type">
+            <div class="name"><h4>Current Member</h4></div>
+            <div class="types">Type 1, Type 2</div>
+          </div>
+          <div class="img-stats">
+            <div class="image">
+              <!-- Member image goes here -->
+              <img src="" alt="" />
+            </div>
+            <div class="stats">
+              <!-- Member stats go here -->
+            </div>
+          </div>
+          <div class="skills">
+            <table>
+              <tr>
+                <th>1</th>
+                <th>2</th>
+              </tr>
+              <tr>
+                <th>3</th>
+                <th>4</th>
+              </tr>
+            </table>
+          </div>
         </div>
+      </div>
+
+      <div class="enemy-team container">
+        <div class="enemy-member" id="enemy-1"></div>
+        <div class="enemy-member" id="enemy-2"></div>
+        <div class="enemy-member" id="enemy-3"></div>
+      </div>
+      <div class="special-effects">
+        <div class="weather"></div>
+        <div class="ground"></div>
+      </div>
     </div>
 
     <script src="../js/pvpcalculator.js"></script>
-</body>
+  </body>
 </html>
