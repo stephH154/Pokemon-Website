@@ -27,9 +27,10 @@ function displayMyTeam(index) {
     const nameElement = document.querySelector(".current-member .name h4");
     const typesElement = document.querySelector(".current-member .types");
     const imgElement = document.querySelector(".current-member .image img");
-    const statsElement = document.querySelector(".current-member .stats")
+    const statsElement = document.querySelector(".current-member .stats");
     if (nameElement) {
-      nameElement.innerHTML = selectedPokemon.charAt(0).toUpperCase() + selectedPokemon.slice(1);;
+      nameElement.innerHTML =
+        selectedPokemon.charAt(0).toUpperCase() + selectedPokemon.slice(1);
     }
     if (typesElement) {
       typesElement.innerHTML = "";
@@ -57,33 +58,36 @@ function displayMyTeam(index) {
       imgElement.src = retrievedPokemonCache[selectedPokemon].imgURL;
       imgElement.alt = selectedPokemon;
     }
-    if(statsElement) {
+    if (statsElement) {
       statsElement.innerHTML = "";
       const pokemonStrength = document.createElement("div");
-          pokemonStrength.classList.add("strength");
-    
-          // Create the table element
-          const table = document.createElement("table");
-    
-    
-          // Create table rows and cells for each stat
-          retrievedPokemonCache[selectedPokemon].stats.forEach((stat) => {
-            const row = document.createElement("tr");
-            const labelCell = document.createElement("td");
-            const valueCell = document.createElement("td");
-    
-            labelCell.textContent = stat.label;
-            valueCell.textContent = stat.value;
-    
-            row.appendChild(labelCell);
-            row.appendChild(valueCell);
-    
-            table.appendChild(row);
-          });
-    
-          // Append the table to the container div
-          pokemonStrength.appendChild(table);
-          statsElement.appendChild(table);  
+      pokemonStrength.classList.add("strength");
+
+      // Create the table element
+      const table = document.createElement("table");
+      let stats = retrievedPokemonCache[selectedPokemon].stats;
+      let temp = stats[5];
+      stats[5] = stats[3];
+      stats[3] = temp;
+
+      // Create table rows and cells for each stat
+      stats.forEach((stat) => {
+        const row = document.createElement("tr");
+        const labelCell = document.createElement("td");
+        const valueCell = document.createElement("td");
+
+        labelCell.textContent = stat.label;
+        valueCell.textContent = stat.value;
+
+        row.appendChild(labelCell);
+        row.appendChild(valueCell);
+
+        table.appendChild(row);
+      });
+
+      // Append the table to the container div
+      pokemonStrength.appendChild(table);
+      statsElement.appendChild(table);
     }
   }
 }
@@ -99,6 +103,4 @@ addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-  
 });
