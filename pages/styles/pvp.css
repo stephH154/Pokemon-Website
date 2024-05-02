@@ -24,6 +24,12 @@
     margin-bottom: 10px; /* Add some space between buttons */
 }
 
+.select-member button:hover{
+    width: 10em;
+    height: 10em;
+    border-radius: 10em;
+}
+
 img {
     width: 90%;
     height: 90%;
@@ -70,11 +76,41 @@ img {
 
 
 .current-member .img-stats .stats{
-    width: 35%;
+    width: 45%;
     height: 200px;
-    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.current-member .img-stats .stats td{
+    padding-right: 15px;
 }
 
 .current-member .skills table{
+    border: 1px solid black;
     width: 100%;
+}
+
+.rightside{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    width: 40%;
+}
+
+.enemy-team{
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+
+.enemy-team .enemy-member{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 33%;
+}
+
+.enemy-team .enemy-member .type-star{
+    width: 100%;    
+    border: 1px solid;
 }
