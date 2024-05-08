@@ -103,4 +103,50 @@ addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+  const enemyTeamTabIMG = document.querySelectorAll(".enemy-team .image img");
+  const typesElement = document.querySelectorAll(
+    ".enemy-team .enemy-member .type-star"
+  );
+  if (enemyTeam) {
+    enemyTeam.forEach((pokemonName, index) => {
+      if (pokemonName) {
+        enemyTeamTabIMG[index].src = retrievedPokemonCache[pokemonName].imgURL;
+
+        if (typesElement[index]) {
+          typesElement[index].innerHTML = "";
+          const typesContainer = document.createElement("div");
+          typesContainer.classList.add("types-container");
+
+          // Iterate over each type of the Pokémon
+          retrievedPokemonCache[pokemonName].type.forEach((type) => {
+            // Create image element for the type
+
+            const cont = document.createElement("div");
+            cont.classList.add("cont");
+            cont.classList.add(`type-${type}`);
+            const typeImg = document.createElement("img");
+            typeImg.src = `../imgs/icons/${type}.svg`; // Replace 'path_to_type_image' with the actual path to your type images
+            typeImg.alt = type;
+
+            // Append type image to typesContainer
+            cont.appendChild(typeImg);
+            typesContainer.appendChild(cont);
+            typesElement[index].append(typesContainer);
+          });
+
+          const stalBox = document.createElement("div");
+          const stalIMG = document.createElement("img");
+          stalIMG.src = "../imgs/icons/terastal.png";
+          const stal = document.createElement("input");
+          stal.setAttribute("type", "checkbox");
+          stalBox.appendChild(stalIMG);
+          stalBox.appendChild(stal);
+          stalBox.classList.add("stal-box");
+          typesElement[index].appendChild(stalBox);
+        }
+      } else {
+        console.log(`Enemy member ${index + 1} not exist`);
+      }
+    });
+  }
 });
