@@ -14,6 +14,8 @@ const enemyTeamParam = urlParams.get("enemyTeam");
 const myTeam = JSON.parse(decodeURIComponent(myTeamParam));
 const enemyTeam = JSON.parse(decodeURIComponent(enemyTeamParam));
 
+let myCurrentPokemon;
+
 // Now you have the 'myTeam' and 'enemyTeam' arrays available for use
 console.log(myTeam, enemyTeam);
 
@@ -24,6 +26,7 @@ console.log(retrievedPokemonCache);
 function displayMyTeam(index) {
   if (myTeam && myTeam.length > index) {
     const selectedPokemon = myTeam[index];
+    myCurrentPokemon = selectedPokemon;
     const nameElement = document.querySelector(".current-member .name h4");
     const typesElement = document.querySelector(".current-member .types");
     const imgElement = document.querySelector(".current-member .image img");
@@ -91,6 +94,43 @@ function displayMyTeam(index) {
     }
   }
 }
+
+function displayResult(){
+  if (myCurrentPokemon) {
+    const mySpeed = retrievedPokemonCache[myCurrentPokemon].stats[5].value;
+
+    const enemySpeeds = enemyTeam.map(enemyPokemon => {
+      return retrievedPokemonCache[enemyPokemon].stats[5].value;
+    });
+
+    console.log(mySpeed, enemySpeeds);
+    const targetDivs = document.querySelectorAll(".calculator .target");
+    for(let i = 0; i < 3; i++){
+      targetDivs[i].innerHTML = "";
+      if(enemyTeam[i]){
+        const targetspan = document.createElement("span");
+        if(mySpeed > enemySpeeds[i]){
+          targetspan.innerHTML = "Faster";
+        }
+        else if(mySpeed < enemySpeeds[i]){
+          targetspan.innerHTML = "Slower";
+        }
+        else{
+          targetspan.innerHTML = "50 50";
+        }
+
+        targetDivs[i].appendChild(targetspan);
+      }
+    }
+
+    
+
+
+  } else {
+    console.log("No Pokémon selected from your team.");
+  }
+}
+
 
 addEventListener("DOMContentLoaded", () => {
   const myTeamTabIMG = document.querySelectorAll(".select-member img");

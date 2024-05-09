@@ -38,7 +38,7 @@ img {
   
 
 .current-member {
-    width: 60%;
+    width: 63%;
     border: 1px solid black;
     padding: 30px;
     border-radius: 10px;
@@ -76,7 +76,7 @@ img {
 
 
 .current-member .img-stats .stats{
-    width: 45%;
+    width: 48%;
     height: 200px;
     border-radius: 10px;
 }
@@ -96,6 +96,7 @@ img {
     border: 1px solid;
     border-radius: 10px;
     width: 40%;
+    margin-right: 50px;
 }
 
 .enemy-team{
@@ -176,4 +177,10 @@ input[type="checkbox"] + label {
 .ground {
   width: 100%; /* Set the width of each container */
   margin-bottom: 20px;
+}
+
+.calculator{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -102,16 +102,84 @@
           <div class="skills">
             <table>
               <tr>
-                <th>1</th>
-                <th>2</th>
+                <th>
+                  1
+                  <div class="input-group">
+                    <input type="text" name="skill1_type" placeholder="Type" />
+                    <input
+                      type="text"
+                      name="skill1_strength"
+                      placeholder="Strength"
+                    />
+                    <input
+                      type="text"
+                      name="skill1_accuracy"
+                      placeholder="Accuracy"
+                    />
+                  </div>
+                </th>
+                <th>
+                  2
+                  <div class="input-group">
+                    <input type="text" name="skill1_type" placeholder="Type" />
+                    <input
+                      type="text"
+                      name="skill1_strength"
+                      placeholder="Strength"
+                    />
+                    <input
+                      type="text"
+                      name="skill1_accuracy"
+                      placeholder="Accuracy"
+                    />
+                  </div>
+                </th>
               </tr>
               <tr>
-                <th>3</th>
-                <th>4</th>
+                <th>
+                  3
+                  <div class="input-group">
+                    <input type="text" name="skill1_type" placeholder="Type" />
+                    <input
+                      type="text"
+                      name="skill1_strength"
+                      placeholder="Strength"
+                    />
+                    <input
+                      type="text"
+                      name="skill1_accuracy"
+                      placeholder="Accuracy"
+                    />
+                  </div>
+                </th>
+                <th>
+                  4
+                  <div class="input-group">
+                    <input type="text" name="skill1_type" placeholder="Type" />
+                    <input
+                      type="text"
+                      name="skill1_strength"
+                      placeholder="Strength"
+                    />
+                    <input
+                      type="text"
+                      name="skill1_accuracy"
+                      placeholder="Accuracy"
+                    />
+                  </div>
+                </th>
               </tr>
             </table>
           </div>
         </div>
+      </div>
+      <div class="calculator container">
+        <div class="result-btn">
+          <button onclick="displayResult()">Result</button>
+        </div>
+        <div class="target"></div>
+        <div class="target"></div>
+        <div class="target"></div>
       </div>
       <div class="rightside container">
         <div class="enemy-team container">
@@ -135,7 +203,6 @@
                 >Select the current weather condition.</span
               >
               <div
-                class="gen-specific g3 g4 g5 g6 g7 g8 g9"
                 style="margin: 5px auto"
                 title="Select the current weather condition."
               >
@@ -186,9 +253,7 @@
             </div>
           </div>
           <div class="ground">
-            <div
-              title="Select the current terrain."
-            >
+            <div title="Select the current terrain.">
               <span class="visually-hidden" id="selectTerrainInstruction"
                 >Select the current terrain.</span
               >
