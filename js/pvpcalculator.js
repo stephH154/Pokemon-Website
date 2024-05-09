@@ -20,7 +20,8 @@ let myCurrentPokemon;
 console.log(myTeam, enemyTeam);
 
 const retrievedPokemonCache = JSON.parse(localStorage.getItem("pokemonCache"));
-console.log(retrievedPokemonCache);
+const types = JSON.parse(localStorage.getItem("types"));
+console.log(types, retrievedPokemonCache);
 
 // Function to display the selected Pokémon from myTeam
 function displayMyTeam(index) {
@@ -190,3 +191,32 @@ addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function recordType(index, type) {
+  console.log(index);
+  replaceSelectedBox(type, types[type].url, index)
+}
+
+function replaceSelectedBox(typeName, imageUrl, index){
+  const selectedBox = document.getElementById(`dc-btn${index}`);
+  const selectedTypeImg = document.getElementById(`dc-img${index}`);
+  const selectedTypeName = document.getElementById(`dc-name${index}`);
+
+  if (selectedBox.classList.length > 1) {
+    selectedBox.classList.remove(selectedBox.classList[1]);
+  }
+
+  selectedTypeImg.src = imageUrl;
+  selectedTypeImg.alt = `${typeName} icon.png`;
+  if(typeName != 'none'){
+    selectedTypeName.style="color: white";
+  }
+  else{
+    selectedTypeName.style="color: black";
+  }
+  selectedBox.classList.add(`type-${typeName}`);
+  // console.log(selectedBox);
+
+  // Update the type name text
+  selectedTypeName.textContent = typeName;
+}

@@ -103,68 +103,1364 @@
             <table>
               <tr>
                 <th>
-                  1
+                  Skill 1
                   <div class="input-group">
-                    <input type="text" name="skill1_type" placeholder="Type" />
+                    <div class="types">
+                      <!-- Button trigger modal -->
+                      <button
+                        id="dc-btn1"
+                        type="button"
+                        class="btn-type"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal1"
+                      >
+                        <img id="dc-img1" src="../imgs/icons/Empty.png"/>
+                        <span id="dc-name1">Select Type</span>
+                      </button>
+          
+                      <!-- Modal -->
+                      <div
+                        class="modal fade"
+                        id="exampleModal1"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel1"
+                        aria-hidden="true"
+                      >
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">
+                                Type
+                              </h5>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <div class="modal-body">
+                              <table>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'none')"
+                                      class="type-none"
+                                    >
+                                      <span style="color: black">None</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'normal')"
+                                      class="type-normal"
+                                    >
+                                      <img
+                                        alt="Normal icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/20px-Normal_icon.png"
+                                        srcset="
+                                          //archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/30px-Normal_icon.png 1.5x,
+                                          //archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/40px-Normal_icon.png 2x
+                                        "
+                                      />
+                                      <span>Normal</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'fire')"
+                                      class="type-fire"
+                                    >
+                                      <img
+                                        alt="Fire icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/5e/Fire_icon.png/20px-Fire_icon.png"
+                                      />
+                                      <span>Fire</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'water')"
+                                      class="type-water"
+                                    >
+                                      <img
+                                        alt="Water icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/7f/Water_icon.png/20px-Water_icon.png"
+                                      />
+                                      <span>Water</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'electric')"
+                                      class="type-electric"
+                                    >
+                                      <img
+                                        alt="Electric icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/af/Electric_icon.png/20px-Electric_icon.png"
+                                      />
+                                      <span>Electric</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'grass')"
+                                      class="type-grass"
+                                    >
+                                      <img
+                                        alt="Grass icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/c/cb/Grass_icon.png/20px-Grass_icon.png"
+                                      />
+                                      <span>Grass</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'ice')"
+                                      class="type-ice"
+                                    >
+                                      <img
+                                        alt="Ice icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/83/Ice_icon.png/20px-Ice_icon.png"
+                                      />
+                                      <span>Ice</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'fighting')"
+                                      class="type-fighting"
+                                    >
+                                      <img
+                                        alt="Fighting icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/7d/Fighting_icon.png/20px-Fighting_icon.png"
+                                      />
+                                      <span>Fighting</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'poison')"
+                                      class="type-poison"
+                                    >
+                                      <img
+                                        alt="Poison icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/84/Poison_icon.png/20px-Poison_icon.png"
+                                      />
+                                      <span>Poison</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'ground')"
+                                      class="type-ground"
+                                    >
+                                      <img
+                                        alt="Ground icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/58/Ground_icon.png/20px-Ground_icon.png"
+                                      />
+                                      <span>Ground</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'flying')"
+                                      class="type-flying"
+                                    >
+                                      <img
+                                        alt="Flying icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/f/f0/Flying_icon.png/20px-Flying_icon.png"
+                                      />
+                                      <span>Flying</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'psychic')"
+                                      class="type-psychic"
+                                    >
+                                      <img
+                                        alt="Psychic icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/a6/Psychic_icon.png/20px-Psychic_icon.png"
+                                      />
+                                      <span>Psychic</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'bug')"
+                                      class="type-bug"
+                                    >
+                                      <img
+                                        alt="Bug icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/79/Bug_icon.png/20px-Bug_icon.png"
+                                      />
+                                      <span>Bug</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'rock')"
+                                      class="type-rock"
+                                    >
+                                      <img
+                                        alt="Rock icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/20px-Rock_icon.png"
+                                      />
+                                      <span>Rock</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'ghost')"
+                                      class="type-ghost"
+                                    >
+                                      <img
+                                        alt="Ghost icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/82/Ghost_icon.png/20px-Ghost_icon.png"
+                                      />
+                                      <span>Ghost</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'dragon')"
+                                      class="type-dragon"
+                                    >
+                                      <img
+                                        alt="Dragon icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/9/91/Dragon_icon.png/20px-Dragon_icon.png"
+                                      />
+                                      <span>Dragon</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'dark')"
+                                      class="type-dark"
+                                    >
+                                      <img
+                                        alt="Dark icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/3/33/Dark_icon.png/20px-Dark_icon.png"
+                                      />
+                                      <span>Dark</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'steel')"
+                                      class="type-steel"
+                                    >
+                                      <img
+                                        alt="Steel icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/b/b8/Steel_icon.png/20px-Steel_icon.png"
+                                      />
+                                      <span>Steel</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(1, 'fairy')"
+                                      class="type-fairy"
+                                    >
+                                      <img
+                                        alt="Fairy icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/5a/Fairy_icon.png/20px-Fairy_icon.png"
+                                      />
+                                      <span>Fairy</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                              </table>
+                            </div>
+                            <div class="modal-footer">
+                              <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <input
                       type="text"
-                      name="skill1_strength"
-                      placeholder="Strength"
+                      name="skill1_power"
+                      placeholder="pwr"
                     />
                     <input
                       type="text"
                       name="skill1_accuracy"
-                      placeholder="Accuracy"
+                      placeholder="acc"
                     />
                   </div>
                 </th>
                 <th>
-                  2
+                  Skill 2
                   <div class="input-group">
-                    <input type="text" name="skill1_type" placeholder="Type" />
+                    <div class="types">
+                      <!-- Button trigger modal -->
+                      <button
+                        id="dc-btn2"
+                        type="button"
+                        class="btn-type"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2"
+                      >
+                        <img id="dc-img2" src="../imgs/icons/Empty.png"/>
+                        <span id="dc-name2">Select Type</span>
+                      </button>
+          
+                      <!-- Modal -->
+                      <div
+                        class="modal fade"
+                        id="exampleModal2"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel2"
+                        aria-hidden="true"
+                      >
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">
+                                Type
+                              </h5>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <div class="modal-body">
+                              <table>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'none')"
+                                      class="type-none"
+                                    >
+                                      <span style="color: black">None</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'normal')"
+                                      class="type-normal"
+                                    >
+                                      <img
+                                        alt="Normal icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/20px-Normal_icon.png"
+                                        srcset="
+                                          //archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/30px-Normal_icon.png 1.5x,
+                                          //archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/40px-Normal_icon.png 2x
+                                        "
+                                      />
+                                      <span>Normal</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'fire')"
+                                      class="type-fire"
+                                    >
+                                      <img
+                                        alt="Fire icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/5e/Fire_icon.png/20px-Fire_icon.png"
+                                      />
+                                      <span>Fire</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'water')"
+                                      class="type-water"
+                                    >
+                                      <img
+                                        alt="Water icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/7f/Water_icon.png/20px-Water_icon.png"
+                                      />
+                                      <span>Water</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'electric')"
+                                      class="type-electric"
+                                    >
+                                      <img
+                                        alt="Electric icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/af/Electric_icon.png/20px-Electric_icon.png"
+                                      />
+                                      <span>Electric</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'grass')"
+                                      class="type-grass"
+                                    >
+                                      <img
+                                        alt="Grass icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/c/cb/Grass_icon.png/20px-Grass_icon.png"
+                                      />
+                                      <span>Grass</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'ice')"
+                                      class="type-ice"
+                                    >
+                                      <img
+                                        alt="Ice icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/83/Ice_icon.png/20px-Ice_icon.png"
+                                      />
+                                      <span>Ice</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'fighting')"
+                                      class="type-fighting"
+                                    >
+                                      <img
+                                        alt="Fighting icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/7d/Fighting_icon.png/20px-Fighting_icon.png"
+                                      />
+                                      <span>Fighting</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'poison')"
+                                      class="type-poison"
+                                    >
+                                      <img
+                                        alt="Poison icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/84/Poison_icon.png/20px-Poison_icon.png"
+                                      />
+                                      <span>Poison</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'ground')"
+                                      class="type-ground"
+                                    >
+                                      <img
+                                        alt="Ground icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/58/Ground_icon.png/20px-Ground_icon.png"
+                                      />
+                                      <span>Ground</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'flying')"
+                                      class="type-flying"
+                                    >
+                                      <img
+                                        alt="Flying icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/f/f0/Flying_icon.png/20px-Flying_icon.png"
+                                      />
+                                      <span>Flying</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'psychic')"
+                                      class="type-psychic"
+                                    >
+                                      <img
+                                        alt="Psychic icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/a6/Psychic_icon.png/20px-Psychic_icon.png"
+                                      />
+                                      <span>Psychic</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'bug')"
+                                      class="type-bug"
+                                    >
+                                      <img
+                                        alt="Bug icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/79/Bug_icon.png/20px-Bug_icon.png"
+                                      />
+                                      <span>Bug</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'rock')"
+                                      class="type-rock"
+                                    >
+                                      <img
+                                        alt="Rock icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/20px-Rock_icon.png"
+                                      />
+                                      <span>Rock</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'ghost')"
+                                      class="type-ghost"
+                                    >
+                                      <img
+                                        alt="Ghost icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/82/Ghost_icon.png/20px-Ghost_icon.png"
+                                      />
+                                      <span>Ghost</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'dragon')"
+                                      class="type-dragon"
+                                    >
+                                      <img
+                                        alt="Dragon icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/9/91/Dragon_icon.png/20px-Dragon_icon.png"
+                                      />
+                                      <span>Dragon</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'dark')"
+                                      class="type-dark"
+                                    >
+                                      <img
+                                        alt="Dark icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/3/33/Dark_icon.png/20px-Dark_icon.png"
+                                      />
+                                      <span>Dark</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'steel')"
+                                      class="type-steel"
+                                    >
+                                      <img
+                                        alt="Steel icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/b/b8/Steel_icon.png/20px-Steel_icon.png"
+                                      />
+                                      <span>Steel</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(2, 'fairy')"
+                                      class="type-fairy"
+                                    >
+                                      <img
+                                        alt="Fairy icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/5a/Fairy_icon.png/20px-Fairy_icon.png"
+                                      />
+                                      <span>Fairy</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                              </table>
+                            </div>
+                            <div class="modal-footer">
+                              <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <input
                       type="text"
-                      name="skill1_strength"
-                      placeholder="Strength"
+                      name="skill2_power"
+                      placeholder="pwr"
                     />
                     <input
                       type="text"
-                      name="skill1_accuracy"
-                      placeholder="Accuracy"
+                      name="skill2_accuracy"
+                      placeholder="acc"
                     />
                   </div>
                 </th>
               </tr>
               <tr>
                 <th>
-                  3
+                  Skill 3
                   <div class="input-group">
-                    <input type="text" name="skill1_type" placeholder="Type" />
+                    <div class="types">
+                      <!-- Button trigger modal -->
+                      <button
+                        id="dc-btn3"
+                        type="button"
+                        class="btn-type"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal3"
+                      >
+                        <img id="dc-img3" src="../imgs/icons/Empty.png"/>
+                        <span id="dc-name3">Select Type</span>
+                      </button>
+          
+                      <!-- Modal -->
+                      <div
+                        class="modal fade"
+                        id="exampleModal3"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel3"
+                        aria-hidden="true"
+                      >
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">
+                                Type
+                              </h5>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <div class="modal-body">
+                              <table>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'none')"
+                                      class="type-none"
+                                    >
+                                      <span style="color: black">None</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'normal')"
+                                      class="type-normal"
+                                    >
+                                      <img
+                                        alt="Normal icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/20px-Normal_icon.png"
+                                        srcset="
+                                          //archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/30px-Normal_icon.png 1.5x,
+                                          //archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/40px-Normal_icon.png 2x
+                                        "
+                                      />
+                                      <span>Normal</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'fire')"
+                                      class="type-fire"
+                                    >
+                                      <img
+                                        alt="Fire icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/5e/Fire_icon.png/20px-Fire_icon.png"
+                                      />
+                                      <span>Fire</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'water')"
+                                      class="type-water"
+                                    >
+                                      <img
+                                        alt="Water icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/7f/Water_icon.png/20px-Water_icon.png"
+                                      />
+                                      <span>Water</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'electric')"
+                                      class="type-electric"
+                                    >
+                                      <img
+                                        alt="Electric icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/af/Electric_icon.png/20px-Electric_icon.png"
+                                      />
+                                      <span>Electric</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'grass')"
+                                      class="type-grass"
+                                    >
+                                      <img
+                                        alt="Grass icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/c/cb/Grass_icon.png/20px-Grass_icon.png"
+                                      />
+                                      <span>Grass</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'ice')"
+                                      class="type-ice"
+                                    >
+                                      <img
+                                        alt="Ice icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/83/Ice_icon.png/20px-Ice_icon.png"
+                                      />
+                                      <span>Ice</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'fighting')"
+                                      class="type-fighting"
+                                    >
+                                      <img
+                                        alt="Fighting icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/7d/Fighting_icon.png/20px-Fighting_icon.png"
+                                      />
+                                      <span>Fighting</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'poison')"
+                                      class="type-poison"
+                                    >
+                                      <img
+                                        alt="Poison icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/84/Poison_icon.png/20px-Poison_icon.png"
+                                      />
+                                      <span>Poison</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'ground')"
+                                      class="type-ground"
+                                    >
+                                      <img
+                                        alt="Ground icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/58/Ground_icon.png/20px-Ground_icon.png"
+                                      />
+                                      <span>Ground</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'flying')"
+                                      class="type-flying"
+                                    >
+                                      <img
+                                        alt="Flying icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/f/f0/Flying_icon.png/20px-Flying_icon.png"
+                                      />
+                                      <span>Flying</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'psychic')"
+                                      class="type-psychic"
+                                    >
+                                      <img
+                                        alt="Psychic icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/a6/Psychic_icon.png/20px-Psychic_icon.png"
+                                      />
+                                      <span>Psychic</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'bug')"
+                                      class="type-bug"
+                                    >
+                                      <img
+                                        alt="Bug icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/79/Bug_icon.png/20px-Bug_icon.png"
+                                      />
+                                      <span>Bug</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'rock')"
+                                      class="type-rock"
+                                    >
+                                      <img
+                                        alt="Rock icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/20px-Rock_icon.png"
+                                      />
+                                      <span>Rock</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'ghost')"
+                                      class="type-ghost"
+                                    >
+                                      <img
+                                        alt="Ghost icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/82/Ghost_icon.png/20px-Ghost_icon.png"
+                                      />
+                                      <span>Ghost</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'dragon')"
+                                      class="type-dragon"
+                                    >
+                                      <img
+                                        alt="Dragon icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/9/91/Dragon_icon.png/20px-Dragon_icon.png"
+                                      />
+                                      <span>Dragon</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'dark')"
+                                      class="type-dark"
+                                    >
+                                      <img
+                                        alt="Dark icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/3/33/Dark_icon.png/20px-Dark_icon.png"
+                                      />
+                                      <span>Dark</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'steel')"
+                                      class="type-steel"
+                                    >
+                                      <img
+                                        alt="Steel icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/b/b8/Steel_icon.png/20px-Steel_icon.png"
+                                      />
+                                      <span>Steel</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(3, 'fairy')"
+                                      class="type-fairy"
+                                    >
+                                      <img
+                                        alt="Fairy icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/5a/Fairy_icon.png/20px-Fairy_icon.png"
+                                      />
+                                      <span>Fairy</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                              </table>
+                            </div>
+                            <div class="modal-footer">
+                              <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <input
                       type="text"
-                      name="skill1_strength"
-                      placeholder="Strength"
+                      name="skill3_power"
+                      placeholder="pwr"
                     />
                     <input
                       type="text"
-                      name="skill1_accuracy"
-                      placeholder="Accuracy"
+                      name="skill3_accuracy"
+                      placeholder="acc"
                     />
                   </div>
                 </th>
                 <th>
-                  4
+                  Skill 4
                   <div class="input-group">
-                    <input type="text" name="skill1_type" placeholder="Type" />
+                    <div class="types">
+                      <!-- Button trigger modal -->
+                      <button
+                        id="dc-btn4"
+                        type="button"
+                        class="btn-type"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal4"
+                      >
+                        <img id="dc-img4" src="../imgs/icons/Empty.png"/>
+                        <span id="dc-name4">Select Type</span>
+                      </button>
+          
+                      <!-- Modal -->
+                      <div
+                        class="modal fade"
+                        id="exampleModal4"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel4"
+                        aria-hidden="true"
+                      >
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">
+                                Type
+                              </h5>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <div class="modal-body">
+                              <table>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'none')"
+                                      class="type-none"
+                                    >
+                                      <span style="color: black">None</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'normal')"
+                                      class="type-normal"
+                                    >
+                                      <img
+                                        alt="Normal icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/20px-Normal_icon.png"
+                                        srcset="
+                                          //archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/30px-Normal_icon.png 1.5x,
+                                          //archives.bulbagarden.net/media/upload/thumb/a/ae/Normal_icon.png/40px-Normal_icon.png 2x
+                                        "
+                                      />
+                                      <span>Normal</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'fire')"
+                                      class="type-fire"
+                                    >
+                                      <img
+                                        alt="Fire icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/5e/Fire_icon.png/20px-Fire_icon.png"
+                                      />
+                                      <span>Fire</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'water')"
+                                      class="type-water"
+                                    >
+                                      <img
+                                        alt="Water icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/7f/Water_icon.png/20px-Water_icon.png"
+                                      />
+                                      <span>Water</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'electric')"
+                                      class="type-electric"
+                                    >
+                                      <img
+                                        alt="Electric icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/af/Electric_icon.png/20px-Electric_icon.png"
+                                      />
+                                      <span>Electric</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'grass')"
+                                      class="type-grass"
+                                    >
+                                      <img
+                                        alt="Grass icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/c/cb/Grass_icon.png/20px-Grass_icon.png"
+                                      />
+                                      <span>Grass</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'ice')"
+                                      class="type-ice"
+                                    >
+                                      <img
+                                        alt="Ice icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/83/Ice_icon.png/20px-Ice_icon.png"
+                                      />
+                                      <span>Ice</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'fighting')"
+                                      class="type-fighting"
+                                    >
+                                      <img
+                                        alt="Fighting icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/7d/Fighting_icon.png/20px-Fighting_icon.png"
+                                      />
+                                      <span>Fighting</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'poison')"
+                                      class="type-poison"
+                                    >
+                                      <img
+                                        alt="Poison icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/84/Poison_icon.png/20px-Poison_icon.png"
+                                      />
+                                      <span>Poison</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'ground')"
+                                      class="type-ground"
+                                    >
+                                      <img
+                                        alt="Ground icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/58/Ground_icon.png/20px-Ground_icon.png"
+                                      />
+                                      <span>Ground</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'flying')"
+                                      class="type-flying"
+                                    >
+                                      <img
+                                        alt="Flying icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/f/f0/Flying_icon.png/20px-Flying_icon.png"
+                                      />
+                                      <span>Flying</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'psychic')"
+                                      class="type-psychic"
+                                    >
+                                      <img
+                                        alt="Psychic icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/a/a6/Psychic_icon.png/20px-Psychic_icon.png"
+                                      />
+                                      <span>Psychic</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'bug')"
+                                      class="type-bug"
+                                    >
+                                      <img
+                                        alt="Bug icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/7/79/Bug_icon.png/20px-Bug_icon.png"
+                                      />
+                                      <span>Bug</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'rock')"
+                                      class="type-rock"
+                                    >
+                                      <img
+                                        alt="Rock icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/f/ff/Rock_icon.png/20px-Rock_icon.png"
+                                      />
+                                      <span>Rock</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'ghost')"
+                                      class="type-ghost"
+                                    >
+                                      <img
+                                        alt="Ghost icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/8/82/Ghost_icon.png/20px-Ghost_icon.png"
+                                      />
+                                      <span>Ghost</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'dragon')"
+                                      class="type-dragon"
+                                    >
+                                      <img
+                                        alt="Dragon icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/9/91/Dragon_icon.png/20px-Dragon_icon.png"
+                                      />
+                                      <span>Dragon</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'dark')"
+                                      class="type-dark"
+                                    >
+                                      <img
+                                        alt="Dark icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/3/33/Dark_icon.png/20px-Dark_icon.png"
+                                      />
+                                      <span>Dark</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'steel')"
+                                      class="type-steel"
+                                    >
+                                      <img
+                                        alt="Steel icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/b/b8/Steel_icon.png/20px-Steel_icon.png"
+                                      />
+                                      <span>Steel</span>
+                                    </button>
+                                  </th>
+                                  <th>
+                                    <button
+                                      type="button"
+                                      data-bs-dismiss="modal"
+                                      onclick="recordType(4, 'fairy')"
+                                      class="type-fairy"
+                                    >
+                                      <img
+                                        alt="Fairy icon.png"
+                                        src="//archives.bulbagarden.net/media/upload/thumb/5/5a/Fairy_icon.png/20px-Fairy_icon.png"
+                                      />
+                                      <span>Fairy</span>
+                                    </button>
+                                  </th>
+                                </tr>
+                              </table>
+                            </div>
+                            <div class="modal-footer">
+                              <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <input
                       type="text"
-                      name="skill1_strength"
-                      placeholder="Strength"
+                      name="skill4_power"
+                      placeholder="pwr"
                     />
                     <input
                       type="text"
-                      name="skill1_accuracy"
-                      placeholder="Accuracy"
+                      name="skill4_accuracy"
+                      placeholder="acc"
                     />
                   </div>
                 </th>

@@ -192,6 +192,7 @@ async function addToTeam(teamName) {
         enemyTeam.push(onHandPokemon);
       }
       localStorage.setItem('pokemonCache', JSON.stringify(pokemonCache));
+      localStorage.setItem('types', JSON.stringify(types));
       redirectToPvPCalculator();
     } else if (
       selectedTeamSlot &&
