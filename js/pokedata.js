@@ -142,11 +142,12 @@ function nowCached() {
 function redirectToPvPCalculator() {
   const myTeamString = JSON.stringify(myTeam);
   const enemyTeamString = JSON.stringify(enemyTeam);
-  const queryString = `?myTeam=${encodeURIComponent(myTeamString)}&enemyTeam=${encodeURIComponent(enemyTeamString)}`;
-  const pvpLink = document.getElementById('pvpLink');
+  const queryString = `?myTeam=${encodeURIComponent(
+    myTeamString
+  )}&enemyTeam=${encodeURIComponent(enemyTeamString)}`;
+  const pvpLink = document.getElementById("pvpLink");
   pvpLink.href = `pvpcalculator.html${queryString}`;
 }
-
 
 // Function to add pokemon to the team
 async function addToTeam(teamName) {
@@ -186,13 +187,13 @@ async function addToTeam(teamName) {
       // rowCell.appendChild(span);
       emptyRow.appendChild(rowCell);
 
-      if ((teamName === "myteam")) {
+      if (teamName === "myteam") {
         myTeam.push(onHandPokemon);
-      } else if(teamName === "enemy"){
+      } else if (teamName === "enemy") {
         enemyTeam.push(onHandPokemon);
       }
-      localStorage.setItem('pokemonCache', JSON.stringify(pokemonCache));
-      localStorage.setItem('types', JSON.stringify(types));
+      localStorage.setItem("pokemonCache", JSON.stringify(pokemonCache));
+      localStorage.setItem("types", JSON.stringify(types));
       redirectToPvPCalculator();
     } else if (
       selectedTeamSlot &&
@@ -201,7 +202,7 @@ async function addToTeam(teamName) {
       let index = selectedTeamSlot.classList[1].substring(5);
       if (teamName === "myteam") {
         myTeam[index] = onHandPokemon;
-      } else if(teamName === "enemy"){
+      } else if (teamName === "enemy") {
         enemyTeam[index] = onHandPokemon;
       }
       redirectToPvPCalculator();
@@ -238,9 +239,7 @@ async function addToTeam(teamName) {
       rowCell.appendChild(typesContainer);
       // rowCell.appendChild(span);
       selectedTeamSlot.appendChild(rowCell);
-      localStorage.setItem('pokemonCache', JSON.stringify(pokemonCache));
-
-     
+      localStorage.setItem("pokemonCache", JSON.stringify(pokemonCache));
     } else {
       console.log("Team is full!"); // Display a message if the team is full
     }
@@ -501,23 +500,26 @@ addEventListener("DOMContentLoaded", () => {
         const response = await fetch(`${pokeAPI}pokemon/${name}`);
         const data = await response.json();
 
-        const stats = [
-          { label: "HP", value: data.stats[0]["base_stat"] },
-          { label: "Attack", value: data.stats[1]["base_stat"] },
-          { label: "Defense", value: data.stats[2]["base_stat"] },
-          { label: "Speed", value: data.stats[5]["base_stat"] },
-          { label: "Special Defense", value: data.stats[4]["base_stat"] },
-          { label: "Special Attack", value: data.stats[3]["base_stat"] },
-        ];
+        if (pokemonCache[name]) {
+        } else {
+          const stats = [
+            { label: "HP", value: data.stats[0]["base_stat"] },
+            { label: "Attack", value: data.stats[1]["base_stat"] },
+            { label: "Defense", value: data.stats[2]["base_stat"] },
+            { label: "Special Attack", value: data.stats[3]["base_stat"] },
+            { label: "Special Defense", value: data.stats[4]["base_stat"] },
+            { label: "Speed", value: data.stats[5]["base_stat"] },
+          ];
 
-        // Store data in cache
-        pokemonCache[name] = {
-          id: data.id,
-          name: data.name,
-          type: data.types,
-          stats: stats, // Store stats in cache for later use
-          imgURL: data.sprites.other["official-artwork"]["front_default"],
-        };
+          // Store data in cache
+          pokemonCache[name] = {
+            id: data.id,
+            name: data.name,
+            type: data.types,
+            stats: stats, // Store stats in cache for later use
+            imgURL: data.sprites.other["official-artwork"]["front_default"],
+          };
+        }
 
         onHandPokemon = data.name;
 

@@ -15,6 +15,7 @@ const myTeam = JSON.parse(decodeURIComponent(myTeamParam));
 const enemyTeam = JSON.parse(decodeURIComponent(enemyTeamParam));
 
 let myCurrentPokemon;
+let currentSkillSlot;
 
 // Now you have the 'myTeam' and 'enemyTeam' arrays available for use
 console.log(myTeam, enemyTeam);
@@ -96,42 +97,43 @@ function displayMyTeam(index) {
   }
 }
 
-function displayResult(){
+function displayResult() {
   if (myCurrentPokemon) {
-    const mySpeed = retrievedPokemonCache[myCurrentPokemon].stats[5].value;
+    let mySpeed;
+    if (retrievedPokemonCache[myCurrentPokemon].stats[5].label === "Speed") {
+      mySpeed = retrievedPokemonCache[myCurrentPokemon].stats[5].value;
+    } else {
+      mySpeed = retrievedPokemonCache[myCurrentPokemon].stats[3].value;
+    }
 
-    const enemySpeeds = enemyTeam.map(enemyPokemon => {
-      return retrievedPokemonCache[enemyPokemon].stats[5].value;
+    const enemySpeeds = enemyTeam.map((enemyPokemon) => {
+      if (retrievedPokemonCache[enemyPokemon].stats[5].label === "Speed") {
+        return retrievedPokemonCache[enemyPokemon].stats[5].value;
+      }
+      return retrievedPokemonCache[enemyPokemon].stats[3].value;
     });
 
     console.log(mySpeed, enemySpeeds);
     const targetDivs = document.querySelectorAll(".calculator .target");
-    for(let i = 0; i < 3; i++){
+    for (let i = 0; i < 3; i++) {
       targetDivs[i].innerHTML = "";
-      if(enemyTeam[i]){
+      if (enemyTeam[i]) {
         const targetspan = document.createElement("span");
-        if(mySpeed > enemySpeeds[i]){
+        if (mySpeed > enemySpeeds[i]) {
           targetspan.innerHTML = "Faster";
-        }
-        else if(mySpeed < enemySpeeds[i]){
+        } else if (mySpeed < enemySpeeds[i]) {
           targetspan.innerHTML = "Slower";
-        }
-        else{
+        } else {
           targetspan.innerHTML = "50 50";
         }
 
         targetDivs[i].appendChild(targetspan);
       }
     }
-
-    
-
-
   } else {
     console.log("No Pokémon selected from your team.");
   }
 }
-
 
 addEventListener("DOMContentLoaded", () => {
   const myTeamTabIMG = document.querySelectorAll(".select-member img");
@@ -190,14 +192,48 @@ addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+  const skillsTabs = document.querySelectorAll(".current-member .skills th");
+
+  skillsTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      // Remove highlight class from all tabs
+      skillsTabs.forEach((tab) => {
+        tab.classList.remove("highlight");
+      });
+
+      // Add highlight class to the clicked tab
+      tab.classList.add("highlight");
+
+      
+      if (index == 0) {
+        currentSkillSlot = 1;
+      }
+      if (index == 20) {
+        currentSkillSlot = 2;
+      }
+      if (index == 40) {
+        currentSkillSlot = 3;
+      }
+      if (index == 60) {
+        currentSkillSlot = 4;
+      }
+
+      // Store the index of the clicked tab
+      console.log("Clicked tab index:", currentSkillSlot);
+    });
+  });
+
+  document
+    .getElementById("show-result")
+    .addEventListener("click", (event) => {});
 });
 
 function recordType(index, type) {
   console.log(index);
-  replaceSelectedBox(type, types[type].url, index)
+  replaceSelectedBox(type, types[type].url, index);
 }
 
-function replaceSelectedBox(typeName, imageUrl, index){
+function replaceSelectedBox(typeName, imageUrl, index) {
   const selectedBox = document.getElementById(`dc-btn${index}`);
   const selectedTypeImg = document.getElementById(`dc-img${index}`);
   const selectedTypeName = document.getElementById(`dc-name${index}`);
@@ -208,11 +244,10 @@ function replaceSelectedBox(typeName, imageUrl, index){
 
   selectedTypeImg.src = imageUrl;
   selectedTypeImg.alt = `${typeName} icon.png`;
-  if(typeName != 'none'){
-    selectedTypeName.style="color: white";
-  }
-  else{
-    selectedTypeName.style="color: black";
+  if (typeName != "none") {
+    selectedTypeName.style = "color: white";
+  } else {
+    selectedTypeName.style = "color: black";
   }
   selectedBox.classList.add(`type-${typeName}`);
   // console.log(selectedBox);
