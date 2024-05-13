@@ -15,6 +15,7 @@ const myTeam = JSON.parse(decodeURIComponent(myTeamParam));
 const enemyTeam = JSON.parse(decodeURIComponent(enemyTeamParam));
 
 let myCurrentPokemon;
+let skillTypes = [];
 let currentSkillSlot;
 
 // Now you have the 'myTeam' and 'enemyTeam' arrays available for use
@@ -114,6 +115,9 @@ function displayResult() {
     });
 
     console.log(mySpeed, enemySpeeds);
+    if(currentSkillSlot){
+      dmgCal(currentSkillSlot);
+    }
     const targetDivs = document.querySelectorAll(".calculator .target");
     for (let i = 0; i < 3; i++) {
       targetDivs[i].innerHTML = "";
@@ -133,6 +137,22 @@ function displayResult() {
   } else {
     console.log("No Pokémon selected from your team.");
   }
+}
+
+function dmgCal(index){
+  const move = document.getElementById(`tp-${index}`);
+  const moveTP = move.options[move.selectedIndex].value;
+  const skillTP = skillTypes[index - 1];
+  const power = document.getElementById(`pwr${index}`).value;
+  const accuracy = document.getElementById(`acc${index}`).value;
+  
+  if(moveTP && skillTP && power && accuracy){
+    console.log(moveTP,skillTP, power, accuracy);
+  }
+  else{
+    console.log("Not enough information to calculate");
+  }
+
 }
 
 addEventListener("DOMContentLoaded", () => {
@@ -230,6 +250,7 @@ addEventListener("DOMContentLoaded", () => {
 
 function recordType(index, type) {
   console.log(index);
+  skillTypes[index - 1] = type;
   replaceSelectedBox(type, types[type].url, index);
 }
 
