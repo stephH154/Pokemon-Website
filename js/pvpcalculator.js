@@ -115,13 +115,18 @@ function displayResult() {
     });
 
     console.log(mySpeed, enemySpeeds);
-    if(currentSkillSlot){
-      dmgCal(currentSkillSlot);
-    }
+
     const targetDivs = document.querySelectorAll(".calculator .target");
     for (let i = 0; i < 3; i++) {
       targetDivs[i].innerHTML = "";
       if (enemyTeam[i]) {
+        let res1;
+        let res2;
+        if (currentSkillSlot) {
+          res1 = dmgCal(currentSkillSlot, myCurrentPokemon, enemyTeam[i])[0];
+          res2 = dmgCal(currentSkillSlot, myCurrentPokemon, enemyTeam[i])[1];
+        }
+
         const targetspan = document.createElement("span");
         if (mySpeed > enemySpeeds[i]) {
           targetspan.innerHTML = "Faster";
@@ -131,7 +136,15 @@ function displayResult() {
           targetspan.innerHTML = "50 50";
         }
 
+        const resultspan = document.createElement("span");
+        if (res1 == 0) {
+          resultspan.innerHTML = "No damage!";
+        } else {
+          resultspan.innerHTML = `${res1}% to ${res2}%`;
+        }
+
         targetDivs[i].appendChild(targetspan);
+        targetDivs[i].appendChild(resultspan);
       }
     }
   } else {
@@ -139,20 +152,83 @@ function displayResult() {
   }
 }
 
-function dmgCal(index){
+function dmgCal(index, offpok, defpok) {
   const move = document.getElementById(`tp-${index}`);
   const moveTP = move.options[move.selectedIndex].value;
   const skillTP = skillTypes[index - 1];
   const power = document.getElementById(`pwr${index}`).value;
   const accuracy = document.getElementById(`acc${index}`).value;
-  
-  if(moveTP && skillTP && power && accuracy){
-    console.log(moveTP,skillTP, power, accuracy);
-  }
-  else{
+  let myAtk;
+  let eneDef;
+  let eneHealth;
+  let effctness;
+
+  if ((moveTP && skillTP && power) || accuracy) {
+    if (moveTP == "phys") {
+      myAtk = retrievedPokemonCache[offpok].stats[1].value;
+      eneDef = retrievedPokemonCache[defpok].stats[2].value;
+    } else if (moveTP == "spel") {
+      if (retrievedPokemonCache[offpok].stats[3] == "Speed") {
+        myAtk = retrievedPokemonCache[offpok].stats[5].value;
+      } else {
+        myAtk = retrievedPokemonCache[offpok].stats[3].value;
+      }
+      eneDef = retrievedPokemonCache[defpok].stats[4].value;
+    }
+    myAtk = myAtk + 20;
+    eneHealth = retrievedPokemonCache[defpok].stats[0].value + 90;
+    effctness = refreshEffectiveness(
+      skillTP,
+      retrievedPokemonCache[defpok].type[0],
+      retrievedPokemonCache[defpok].type[1]
+    );
+    if (
+      skillTP == retrievedPokemonCache[defpok].type[0] ||
+      skillTP == retrievedPokemonCache[defpok].type[1]
+    ) {
+      effctness *= 1.5;
+    }
+
+    let dmg = dmgFormula(myAtk, eneDef, power, effctness, eneHealth);
+    let dmg2 = dmgFormula(myAtk + 32, eneDef, power, effctness, eneHealth);
+
+    console.log(offpok, myAtk, eneDef, effctness, "hi", eneHealth, dmg, dmg2);
+    return dmg2;
+  } else {
     console.log("Not enough information to calculate");
   }
+}
 
+function dmgFormula(atk, def, power, eff, hp) {
+  let result;
+  result = (0.44 * (atk / def) * power + 2) * eff;
+  let rand = 0.85;
+  result = Math.floor(result).toFixed(2);
+  return [
+    Math.floor((result / hp) * 100 * rand),
+    Math.floor((result / hp) * 100),
+  ];
+}
+
+function refreshEffectiveness(attk_type, defs_type1, defs_type2) {
+  let effectness = 1;
+
+  if (types[attk_type].strong.includes(defs_type1)) {
+    effectness *= 2;
+  } else if (types[attk_type].weak.includes(defs_type1)) {
+    effectness *= 1 / 2;
+  } else if (types[attk_type].immune.includes(defs_type1)) {
+    effectness *= 0;
+  }
+
+  if (types[attk_type].strong.includes(defs_type2)) {
+    effectness *= 2;
+  } else if (types[attk_type].weak.includes(defs_type2)) {
+    effectness *= 1 / 2;
+  } else if (types[attk_type].immune.includes(defs_type2)) {
+    effectness *= 0;
+  }
+  return effectness;
 }
 
 addEventListener("DOMContentLoaded", () => {
@@ -212,6 +288,7 @@ addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
   const skillsTabs = document.querySelectorAll(".current-member .skills th");
 
   skillsTabs.forEach((tab, index) => {
@@ -224,7 +301,6 @@ addEventListener("DOMContentLoaded", () => {
       // Add highlight class to the clicked tab
       tab.classList.add("highlight");
 
-      
       if (index == 0) {
         currentSkillSlot = 1;
       }

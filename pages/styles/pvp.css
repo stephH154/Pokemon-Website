@@ -28,6 +28,8 @@
   width: 10em;
   height: 10em;
   border-radius: 10em;
+  position: relative;
+  left: 0;
 }
 
 img {
@@ -225,7 +227,10 @@ input[type="checkbox"] + label {
   flex-grow: initial;
   padding: 6vh;
   height: 50px;
-  width: 50px;
+}
+
+.calculator .target span{
+  margin-right: 5px;
 }
 
 .calculator .result-btn {

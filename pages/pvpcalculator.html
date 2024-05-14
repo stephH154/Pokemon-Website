@@ -102,7 +102,7 @@
           <div class="skills">
             <table>
               <tr>
-                <th class="skill1" style="padding: 10px;">
+                <th class="skill1" style="padding: 10px">
                   Skill 1
                   <select name="move-tp1" id="tp-1">
                     <option value="phys">Physical</option>
@@ -118,10 +118,10 @@
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal1"
                       >
-                        <img id="dc-img1" src="../imgs/icons/Empty.png"/>
+                        <img id="dc-img1" src="../imgs/icons/Empty.png" />
                         <span id="dc-name1">Select Type</span>
                       </button>
-          
+
                       <!-- Modal -->
                       <div
                         class="modal fade"
@@ -448,7 +448,7 @@
                     />
                   </div>
                 </th>
-                <th class="skill2" style="padding: 10px;">
+                <th class="skill2" style="padding: 10px">
                   Skill 2
                   <select name="move-tp2" id="tp-2">
                     <option value="phys">Physical</option>
@@ -464,10 +464,10 @@
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal2"
                       >
-                        <img id="dc-img2" src="../imgs/icons/Empty.png"/>
+                        <img id="dc-img2" src="../imgs/icons/Empty.png" />
                         <span id="dc-name2">Select Type</span>
                       </button>
-          
+
                       <!-- Modal -->
                       <div
                         class="modal fade"
@@ -796,7 +796,7 @@
                 </th>
               </tr>
               <tr>
-                <th class="skill3" style="padding: 10px;">
+                <th class="skill3" style="padding: 10px">
                   Skill 3
                   <select name="move-tp3" id="tp-3">
                     <option value="phys">Physical</option>
@@ -812,10 +812,10 @@
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal3"
                       >
-                        <img id="dc-img3" src="../imgs/icons/Empty.png"/>
+                        <img id="dc-img3" src="../imgs/icons/Empty.png" />
                         <span id="dc-name3">Select Type</span>
                       </button>
-          
+
                       <!-- Modal -->
                       <div
                         class="modal fade"
@@ -1142,7 +1142,7 @@
                     />
                   </div>
                 </th>
-                <th class="skill4" style="padding: 10px;">
+                <th class="skill4" style="padding: 10px">
                   Skill 4
                   <select name="move-tp4" id="tp-4">
                     <option value="phys">Physical</option>
@@ -1158,10 +1158,10 @@
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal4"
                       >
-                        <img id="dc-img4" src="../imgs/icons/Empty.png"/>
+                        <img id="dc-img4" src="../imgs/icons/Empty.png" />
                         <span id="dc-name4">Select Type</span>
                       </button>
-          
+
                       <!-- Modal -->
                       <div
                         class="modal fade"
@@ -1620,5 +1620,11 @@
     </div>
 
     <script src="../js/pvpcalculator.js"></script>
+    <script>
+      window.addEventListener("beforeunload", function (event) {
+        // Cancel the event to prevent the page from refreshing
+        event.preventDefault();
+      });
+    </script>
   </body>
 </html>
