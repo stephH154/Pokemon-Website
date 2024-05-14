@@ -17,6 +17,8 @@ const enemyTeam = JSON.parse(decodeURIComponent(enemyTeamParam));
 let myCurrentPokemon;
 let skillTypes = [];
 let currentSkillSlot;
+let currentWeather;
+let currentTerrein;
 
 // Now you have the 'myTeam' and 'enemyTeam' arrays available for use
 console.log(myTeam, enemyTeam);
@@ -123,8 +125,10 @@ function displayResult() {
         let res1;
         let res2;
         if (currentSkillSlot) {
-          res1 = dmgCal(currentSkillSlot, myCurrentPokemon, enemyTeam[i])[0];
-          res2 = dmgCal(currentSkillSlot, myCurrentPokemon, enemyTeam[i])[1];
+          if (dmgCal(currentSkillSlot, myCurrentPokemon, enemyTeam[i])) {
+            res1 = dmgCal(currentSkillSlot, myCurrentPokemon, enemyTeam[i])[0];
+            res2 = dmgCal(currentSkillSlot, myCurrentPokemon, enemyTeam[i])[1];
+          }
         }
 
         const targetspan = document.createElement("span");
@@ -139,12 +143,16 @@ function displayResult() {
         const resultspan = document.createElement("span");
         if (res1 == 0) {
           resultspan.innerHTML = "No damage!";
+        } else if (res1 >= 100) {
+          resultspan.innerHTML = "100%";
         } else {
           resultspan.innerHTML = `${res1}% to ${res2}%`;
         }
 
         targetDivs[i].appendChild(targetspan);
-        targetDivs[i].appendChild(resultspan);
+        if (res1 && res2) {
+          targetDivs[i].appendChild(resultspan);
+        }
       }
     }
   } else {
@@ -183,8 +191,8 @@ function dmgCal(index, offpok, defpok) {
       retrievedPokemonCache[defpok].type[1]
     );
     if (
-      skillTP == retrievedPokemonCache[defpok].type[0] ||
-      skillTP == retrievedPokemonCache[defpok].type[1]
+      skillTP == retrievedPokemonCache[offpok].type[0] ||
+      skillTP == retrievedPokemonCache[offpok].type[1]
     ) {
       effctness *= 1.5;
     }
@@ -196,6 +204,7 @@ function dmgCal(index, offpok, defpok) {
     return dmg2;
   } else {
     console.log("Not enough information to calculate");
+    return null;
   }
 }
 
@@ -322,6 +331,22 @@ addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("show-result")
     .addEventListener("click", (event) => {});
+
+  const weatherLabels = document.querySelectorAll(
+    'div[title="Select the current weather condition."] label'
+  );
+
+  // Add event listeners to each label
+  weatherLabels.forEach((label) => {
+    label.addEventListener("click", () => {
+      // Retrieve the value of the selected label
+      const selectedValue = label.getAttribute("for");
+
+      // Log or use the selected value as needed
+      currentWeather = selectedValue;
+      console.log("Selected weather condition:", selectedValue);
+    });
+  });
 });
 
 function recordType(index, type) {
