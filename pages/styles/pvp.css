@@ -121,7 +121,10 @@ img {
   width: 10%;
   border: none;
   margin: 10px;
+  outline: 1px solid transparent;
 }
+
+
 
 .rightside {
   display: flex;
@@ -229,7 +232,7 @@ input[type="checkbox"] + label {
   height: 50px;
 }
 
-.calculator .target span{
+.calculator .target span {
   margin-right: 5px;
 }
 

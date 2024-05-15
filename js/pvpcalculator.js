@@ -1,3 +1,32 @@
+const weatherEf = {
+  clear: {
+    strong: [],
+    weak: [],
+    immune: [],
+  },
+  sun: {
+    strong: ["fire"],
+    weak: ["water"],
+    immune: [],
+  },
+  rain: {
+    strong: ["water"],
+    weak: ["fire"],
+    immune: [],
+  },
+  sand: {
+    strong: ["rock"],
+    weak: [],
+    immune: [],
+  },
+  snow: {
+    strong: ["ice"],
+    weak: [],
+    immune: [],
+  },
+
+}
+
 // Get the query string from the URL
 const queryString = window.location.search;
 
@@ -26,6 +55,16 @@ console.log(myTeam, enemyTeam);
 const retrievedPokemonCache = JSON.parse(localStorage.getItem("pokemonCache"));
 const types = JSON.parse(localStorage.getItem("types"));
 console.log(types, retrievedPokemonCache);
+
+function redirectToPokeData() {
+  const myTeamString = JSON.stringify(myTeam);
+  const enemyTeamString = JSON.stringify(enemyTeam);
+  const queryString = `?myTeam=${encodeURIComponent(
+    myTeamString
+  )}&enemyTeam=${encodeURIComponent(enemyTeamString)}`;
+  const pvpLink = document.getElementById("pvpLink");
+  pvpLink.href = `pvpcalculator.html${queryString}`;
+}
 
 // Function to display the selected Pokémon from myTeam
 function displayMyTeam(index) {
@@ -143,6 +182,9 @@ function displayResult() {
         const resultspan = document.createElement("span");
         if (res1 == 0) {
           resultspan.innerHTML = "No damage!";
+          targetDivs[i].appendChild(targetspan);
+          targetDivs[i].appendChild(resultspan);
+          return;
         } else if (res1 >= 100) {
           resultspan.innerHTML = "100%";
         } else {
@@ -175,6 +217,12 @@ function dmgCal(index, offpok, defpok) {
     if (moveTP == "phys") {
       myAtk = retrievedPokemonCache[offpok].stats[1].value;
       eneDef = retrievedPokemonCache[defpok].stats[2].value;
+
+      if(currentWeather == "snow" && (retrievedPokemonCache[defpok].type[0] == weatherEf[currentWeather].strong[0] || 
+      retrievedPokemonCache[defpok].type[1] == weatherEf[currentWeather].strong[0])){
+        eneDef *= 1.5;
+      }
+
     } else if (moveTP == "spel") {
       if (retrievedPokemonCache[offpok].stats[3] == "Speed") {
         myAtk = retrievedPokemonCache[offpok].stats[5].value;
@@ -182,6 +230,11 @@ function dmgCal(index, offpok, defpok) {
         myAtk = retrievedPokemonCache[offpok].stats[3].value;
       }
       eneDef = retrievedPokemonCache[defpok].stats[4].value;
+
+      if(currentWeather == "sand" && (retrievedPokemonCache[defpok].type[0] == weatherEf[currentWeather].strong[0] || 
+        retrievedPokemonCache[defpok].type[1] == weatherEf[currentWeather].strong[0])){
+          eneDef *= 1.5;
+        }
     }
     myAtk = myAtk + 20;
     eneHealth = retrievedPokemonCache[defpok].stats[0].value + 90;
@@ -196,11 +249,21 @@ function dmgCal(index, offpok, defpok) {
     ) {
       effctness *= 1.5;
     }
+    if(currentWeather == "sun" || currentWeather == "rain"){
+      let strongTP = weatherEf[currentWeather].strong[0]; 
+      let weakTP = weatherEf[currentWeather].weak[0]; 
+      if(skillTP == strongTP){
+        effctness *= 1.5;
+      }
+      if(skillTP == weakTP){
+        effctness *= 0.5;
+      }
+    }
 
     let dmg = dmgFormula(myAtk, eneDef, power, effctness, eneHealth);
     let dmg2 = dmgFormula(myAtk + 32, eneDef, power, effctness, eneHealth);
 
-    console.log(offpok, myAtk, eneDef, effctness, "hi", eneHealth, dmg, dmg2);
+    // console.log(offpok, myAtk, eneDef, effctness, "hi", eneHealth, dmg, dmg2);
     return dmg2;
   } else {
     console.log("Not enough information to calculate");
