@@ -24,8 +24,7 @@ const weatherEf = {
     weak: [],
     immune: [],
   },
-
-}
+};
 
 // Get the query string from the URL
 const queryString = window.location.search;
@@ -218,11 +217,15 @@ function dmgCal(index, offpok, defpok) {
       myAtk = retrievedPokemonCache[offpok].stats[1].value;
       eneDef = retrievedPokemonCache[defpok].stats[2].value;
 
-      if(currentWeather == "snow" && (retrievedPokemonCache[defpok].type[0] == weatherEf[currentWeather].strong[0] || 
-      retrievedPokemonCache[defpok].type[1] == weatherEf[currentWeather].strong[0])){
+      if (
+        currentWeather == "snow" &&
+        (retrievedPokemonCache[defpok].type[0] ==
+          weatherEf[currentWeather].strong[0] ||
+          retrievedPokemonCache[defpok].type[1] ==
+            weatherEf[currentWeather].strong[0])
+      ) {
         eneDef *= 1.5;
       }
-
     } else if (moveTP == "spel") {
       if (retrievedPokemonCache[offpok].stats[3] == "Speed") {
         myAtk = retrievedPokemonCache[offpok].stats[5].value;
@@ -231,10 +234,15 @@ function dmgCal(index, offpok, defpok) {
       }
       eneDef = retrievedPokemonCache[defpok].stats[4].value;
 
-      if(currentWeather == "sand" && (retrievedPokemonCache[defpok].type[0] == weatherEf[currentWeather].strong[0] || 
-        retrievedPokemonCache[defpok].type[1] == weatherEf[currentWeather].strong[0])){
-          eneDef *= 1.5;
-        }
+      if (
+        currentWeather == "sand" &&
+        (retrievedPokemonCache[defpok].type[0] ==
+          weatherEf[currentWeather].strong[0] ||
+          retrievedPokemonCache[defpok].type[1] ==
+            weatherEf[currentWeather].strong[0])
+      ) {
+        eneDef *= 1.5;
+      }
     }
     myAtk = myAtk + 20;
     eneHealth = retrievedPokemonCache[defpok].stats[0].value + 90;
@@ -249,19 +257,22 @@ function dmgCal(index, offpok, defpok) {
     ) {
       effctness *= 1.5;
     }
-    if(currentWeather == "sun" || currentWeather == "rain"){
-      let strongTP = weatherEf[currentWeather].strong[0]; 
-      let weakTP = weatherEf[currentWeather].weak[0]; 
-      if(skillTP == strongTP){
+    if (currentWeather == "sun" || currentWeather == "rain") {
+      let strongTP = weatherEf[currentWeather].strong[0];
+      let weakTP = weatherEf[currentWeather].weak[0];
+      if (skillTP == strongTP) {
         effctness *= 1.5;
       }
-      if(skillTP == weakTP){
+      if (skillTP == weakTP) {
         effctness *= 0.5;
       }
     }
 
     let dmg = dmgFormula(myAtk, eneDef, power, effctness, eneHealth);
     let dmg2 = dmgFormula(myAtk + 32, eneDef, power, effctness, eneHealth);
+    if (dmg2[1] >= 100) {
+      dmg2[1] = 100;
+    }
 
     // console.log(offpok, myAtk, eneDef, effctness, "hi", eneHealth, dmg, dmg2);
     return dmg2;

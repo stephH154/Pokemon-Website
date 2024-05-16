@@ -21,7 +21,8 @@
   width: 100px;
   height: 100px;
   border-radius: 100px;
-  margin-bottom: 10px; /* Add some space between buttons */
+  margin-bottom: 10px;
+  /* Add some space between buttons */
 }
 
 .select-member button:hover {
@@ -115,16 +116,16 @@ img {
 }
 
 .input-group input[type="text"] {
-  flex: 0.5; /* Make the input fields expand to fill available space */
-  margin-right: 10px; /* Add some spacing between the input fields */
+  flex: 0.5;
+  /* Make the input fields expand to fill available space */
+  margin-right: 10px;
+  /* Add some spacing between the input fields */
   background-color: rgb(222, 255, 219);
   width: 10%;
   border: none;
   margin: 10px;
   outline: 1px solid transparent;
 }
-
-
 
 .rightside {
   display: flex;
@@ -190,18 +191,17 @@ img {
 
 input[type="radio"]:checked + label,
 input[type="checkbox"]:checked + label {
-  background-color: rgb(
-    5,
-    9,
-    6
-  ); /* Change the background color when selected */
-  color: white; /* Change the text color when selected */
+  background-color: rgb(5, 9, 6);
+  /* Change the background color when selected */
+  color: white;
+  /* Change the text color when selected */
 }
 
 /* Add spacing between the radio buttons and checkboxes */
 input[type="radio"] + label,
 input[type="checkbox"] + label {
-  margin-right: 10px; /* Adjust the margin as needed */
+  margin-right: 10px;
+  /* Adjust the margin as needed */
 }
 
 /* Style the container */
@@ -209,12 +209,14 @@ input[type="checkbox"] + label {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 20px; /* Add margin to separate from other content */
+  margin-top: 20px;
+  /* Add margin to separate from other content */
 }
 
 .weather,
 .ground {
-  width: 100%; /* Set the width of each container */
+  width: 100%;
+  /* Set the width of each container */
   margin-bottom: 20px;
 }
 
