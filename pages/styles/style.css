@@ -157,7 +157,7 @@ ul li span:hover {
   height: 594.2px;
 }
 
-.d-choose:hover{
+.d-choose:hover {
   cursor: not-allowed;
 }
 
@@ -363,7 +363,7 @@ th button span {
 
 .types-container {
   display: flex;
-  flex-direction: row ;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -373,31 +373,35 @@ th button span {
   align-items: stretch;
 }
 
-.team-builder button{
+.team-builder button {
   border-radius: 10px;
   margin-top: 10px;
 }
 
-.team-builder div{
+.team-builder div {
   width: 45%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
 
-.team-builder th{
+.team-builder th {
   border-bottom: 1px solid;
 }
 
-.team-builder th .row-cell{
+.team-builder th .row-cell {
   width: 100%;
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
 }
 
-.team-builder th img{
+.team-builder th img {
   width: 50%;
+}
+
+.team-builder .selected{
+  background-color: #ffecd8;
 }
 
 .types-container .cont {
@@ -427,12 +431,12 @@ th button span {
   margin-bottom: 8px;
 }
 
-.row-cell .cont img{
+.row-cell .cont img {
   position: relative;
   width: 100%;
-    top: 10px;
-    margin-top: 3px;
-    margin-bottom: 2px;
+  top: 10px;
+  margin-top: 3px;
+  margin-bottom: 2px;
 }
 
 .type-img {

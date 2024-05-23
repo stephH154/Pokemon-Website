@@ -39,14 +39,19 @@ const myTeamParam = urlParams.get("myTeam");
 const enemyTeamParam = urlParams.get("enemyTeam");
 
 // Convert the JSON strings back to JavaScript objects
-const myTeam = JSON.parse(decodeURIComponent(myTeamParam));
-const enemyTeam = JSON.parse(decodeURIComponent(enemyTeamParam));
+const myTeam = localStorage.getItem("myTeam")
+  ? JSON.parse(localStorage.getItem("myTeam"))
+  : JSON.parse(decodeURIComponent(myTeamParam));
+const enemyTeam = localStorage.getItem("enemyTeam")
+  ? JSON.parse(localStorage.getItem("enemyTeam"))
+  : JSON.parse(decodeURIComponent(enemyTeamParam));
 
 let myCurrentPokemon;
 let skillTypes = [];
 let currentSkillSlot;
 let currentWeather;
 let currentTerrein;
+const pokemonSkills = {};
 
 // Now you have the 'myTeam' and 'enemyTeam' arrays available for use
 console.log(myTeam, enemyTeam);
@@ -196,9 +201,34 @@ function displayResult() {
         }
       }
     }
+
+    addSkillToCache();
   } else {
     console.log("No Pokémon selected from your team.");
   }
+}
+//Link this skill with the pokemon name and store in local storage: move type(1), skill type(2), skill power(3), accuracy(4)
+function addSkillToCache() {
+  for (let index = 1; index < 5; index++) {
+    const move = document.getElementById(`tp-${index}`);
+    const moveTP = move.options[move.selectedIndex].value;
+    const skillTP = skillTypes[index - 1];
+    const power = document.getElementById(`pwr${index}`).value;
+    const accuracy = document.getElementById(`acc${index}`).value;
+    let skillData = [];
+    skillData.push(moveTP, skillTP, power, accuracy);
+
+    if (pokemonSkills[myCurrentPokemon]) {
+      pokemonSkills[myCurrentPokemon][index] = skillData;
+    } else {
+      const skillinfo = {};
+      skillinfo[index] = skillData;
+      pokemonSkills[myCurrentPokemon] = skillinfo;
+
+      // localStorage.setItem("pokemonSkills", JSON.stringify(pokemonSkills));
+    }
+  }
+  console.log(pokemonSkills);
 }
 
 function dmgCal(index, offpok, defpok) {

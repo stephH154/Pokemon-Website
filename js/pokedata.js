@@ -128,7 +128,7 @@ let pokeAPI = "https://pokeapi.co/api/v2/";
 let coin = 0;
 let type1 = "none";
 let type2 = "none";
-const pokemonCache = {};
+let pokemonCache = {};
 let onHandPokemon;
 let selectedTeamSlot;
 let myTeam = [];
@@ -147,6 +147,9 @@ function redirectToPvPCalculator() {
   )}&enemyTeam=${encodeURIComponent(enemyTeamString)}`;
   const pvpLink = document.getElementById("pvpLink");
   pvpLink.href = `pvpcalculator.html${queryString}`;
+
+  localStorage.setItem("myTeam", myTeamString);
+  localStorage.setItem("enemyTeam", enemyTeamString);
 }
 
 // Function to add pokemon to the team
@@ -251,11 +254,109 @@ async function addToTeam(teamName) {
 
 document.querySelectorAll(".myteam th, .enemy th").forEach((slot) => {
   slot.addEventListener("click", () => {
+    document.querySelectorAll(".myteam th, .enemy th").forEach((s) => {
+      s.classList.remove("selected");
+    });
     selectedTeamSlot = slot;
+    slot.classList.add("selected");
   });
 });
 
+function checkTeamAlreadyExist() {
+  if (localStorage.getItem("pokemonCache")) {
+    pokemonCache = JSON.parse(localStorage.getItem("pokemonCache"));
+  } else {
+    return;
+  }
+  if (localStorage.getItem("myTeam")) {
+    const teamTable = document.querySelector(`.myteam table`);
+
+    myTeam = JSON.parse(localStorage.getItem("myTeam"));
+
+    myTeam.forEach((pokemon) => {
+      const emptyRow = teamTable.querySelector("th:empty");
+      if (emptyRow) {
+        const rowCell = document.createElement("div");
+        rowCell.classList.add("row-cell");
+        const img = document.createElement("img");
+        img.src = pokemonCache[pokemon].imgURL;
+        const span = document.createElement("span");
+        span.innerHTML = pokemon;
+
+        const typesContainer = document.createElement("div");
+        typesContainer.classList.add("types-container");
+
+        // Iterate over each type of the Pokémon
+        pokemonCache[pokemon].type.forEach((type) => {
+          // Create image element for the type
+
+          const cont = document.createElement("div");
+          cont.classList.add("cont");
+          cont.classList.add(`type-${type}`);
+          const typeImg = document.createElement("img");
+          typeImg.src = `../imgs/icons/${type}.svg`; // Replace 'path_to_type_image' with the actual path to your type images
+          typeImg.alt = type;
+          typeImg.classList.add("type-img");
+
+          // Append type image to typesContainer
+          cont.appendChild(typeImg);
+          typesContainer.appendChild(cont);
+        });
+
+        rowCell.appendChild(img);
+        rowCell.appendChild(typesContainer);
+        // rowCell.appendChild(span);
+        emptyRow.appendChild(rowCell);
+      }
+    });
+  }
+  if (localStorage.getItem("enemyTeam")) {
+    const teamTable = document.querySelector(`.enemy table`);
+
+    enemyTeam = JSON.parse(localStorage.getItem("enemyTeam"));
+
+    enemyTeam.forEach((pokemon) => {
+      const emptyRow = teamTable.querySelector("th:empty");
+      if (emptyRow) {
+        const rowCell = document.createElement("div");
+        rowCell.classList.add("row-cell");
+        const img = document.createElement("img");
+        img.src = pokemonCache[pokemon].imgURL;
+        const span = document.createElement("span");
+        span.innerHTML = pokemon;
+
+        const typesContainer = document.createElement("div");
+        typesContainer.classList.add("types-container");
+
+        // Iterate over each type of the Pokémon
+        pokemonCache[pokemon].type.forEach((type) => {
+          // Create image element for the type
+
+          const cont = document.createElement("div");
+          cont.classList.add("cont");
+          cont.classList.add(`type-${type}`);
+          const typeImg = document.createElement("img");
+          typeImg.src = `../imgs/icons/${type}.svg`; // Replace 'path_to_type_image' with the actual path to your type images
+          typeImg.alt = type;
+          typeImg.classList.add("type-img");
+
+          // Append type image to typesContainer
+          cont.appendChild(typeImg);
+          typesContainer.appendChild(cont);
+        });
+
+        rowCell.appendChild(img);
+        rowCell.appendChild(typesContainer);
+        // rowCell.appendChild(span);
+        emptyRow.appendChild(rowCell);
+      }
+    });
+  }
+}
+
 addEventListener("DOMContentLoaded", () => {
+  checkTeamAlreadyExist();
+
   const type_sel = document.querySelectorAll(".type-selector table button");
 
   type_sel.forEach((btn) => {
