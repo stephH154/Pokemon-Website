@@ -38,6 +38,9 @@
         <a class="navbar-brand" href="#" style="margin-left: 20px"
           >Poke'Helper</a
         >
+        <button onclick="localStorage.clear(), location.reload()">
+          clear cache
+        </button>
         <button
           class="navbar-toggler"
           type="button"
@@ -62,7 +65,9 @@
               <a class="nav-link" href="pokemondata.html">Pokemon data</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="pvpLink" href="pvpcalculator.html">PvP calculator</a>
+              <a class="nav-link" id="pvpLink" href="pvpcalculator.html"
+                >PvP calculator</a
+              >
             </li>
             <!-- <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
@@ -294,6 +299,7 @@
               id="input-pokemon"
               placeholder="Input the pokemon you want to search"
             />
+
             <button type="submit" for="input-pokemon">Search</button>
           </form>
           <!-- <button onclick="nowCached()">now C</button> -->
