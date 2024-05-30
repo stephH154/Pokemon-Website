@@ -117,9 +117,9 @@ function displayMyTeam(index) {
       // Create the table element
       const table = document.createElement("table");
       let stats = retrievedPokemonCache[selectedPokemon].stats;
-      let temp = stats[5];
-      stats[5] = stats[3];
-      stats[3] = temp;
+      // let temp = stats[5];
+      // stats[5] = stats[3];
+      // stats[3] = temp;
 
       // Create table rows and cells for each stat
       stats.forEach((stat) => {
@@ -146,17 +146,10 @@ function displayMyTeam(index) {
 function displayResult() {
   if (myCurrentPokemon) {
     let mySpeed;
-    if (retrievedPokemonCache[myCurrentPokemon].stats[5].label === "Speed") {
-      mySpeed = retrievedPokemonCache[myCurrentPokemon].stats[5].value;
-    } else {
-      mySpeed = retrievedPokemonCache[myCurrentPokemon].stats[3].value;
-    }
+    mySpeed = retrievedPokemonCache[myCurrentPokemon].stats[5].value;
 
     const enemySpeeds = enemyTeam.map((enemyPokemon) => {
-      if (retrievedPokemonCache[enemyPokemon].stats[5].label === "Speed") {
-        return retrievedPokemonCache[enemyPokemon].stats[5].value;
-      }
-      return retrievedPokemonCache[enemyPokemon].stats[3].value;
+      return retrievedPokemonCache[enemyPokemon].stats[5].value;
     });
 
     console.log(mySpeed, enemySpeeds);
@@ -177,10 +170,10 @@ function displayResult() {
         const targetspan = document.createElement("span");
         if (mySpeed > enemySpeeds[i]) {
           targetspan.innerHTML = "Faster";
-        } else if (mySpeed < enemySpeeds[i]) {
-          targetspan.innerHTML = "Slower";
-        } else {
+        } else if (mySpeed == enemySpeeds[i]) {
           targetspan.innerHTML = "50 50";
+        } else {
+          targetspan.innerHTML = "Slower";
         }
 
         const resultspan = document.createElement("span");
@@ -228,7 +221,7 @@ function addSkillToCache() {
       // localStorage.setItem("pokemonSkills", JSON.stringify(pokemonSkills));
     }
   }
-  console.log(pokemonSkills);
+  // console.log(pokemonSkills);
 }
 
 function dmgCal(index, offpok, defpok) {
@@ -257,11 +250,7 @@ function dmgCal(index, offpok, defpok) {
         eneDef *= 1.5;
       }
     } else if (moveTP == "spel") {
-      if (retrievedPokemonCache[offpok].stats[3] == "Speed") {
-        myAtk = retrievedPokemonCache[offpok].stats[5].value;
-      } else {
-        myAtk = retrievedPokemonCache[offpok].stats[3].value;
-      }
+      myAtk = retrievedPokemonCache[offpok].stats[5].value;
       eneDef = retrievedPokemonCache[defpok].stats[4].value;
 
       if (

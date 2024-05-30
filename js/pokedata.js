@@ -121,8 +121,6 @@ for (const type in types) {
   }
 }
 
-console.log(types);
-
 let default_display;
 let pokeAPI = "https://pokeapi.co/api/v2/";
 let coin = 0;
@@ -695,9 +693,13 @@ addEventListener("DOMContentLoaded", () => {
 
     // pokeDisplay.appendChild(pokemonElement);
     // pokeDisplay.appendChild(pokemonStrength);
+    const tableStat = data.stats;
+    let temp = tableStat[3];
+    tableStat[3] = tableStat[5];
+    tableStat[5] = temp;
 
-    const labels = data.stats.map((stat) => stat.label + `\n ${stat.value}`);
-    const dataValues = data.stats.map((stat) => stat.value);
+    const labels = tableStat.map((stat) => stat.label + `\n ${stat.value}`);
+    const dataValues = tableStat.map((stat) => stat.value);
     // Create a Chart.js radar chart
     new Chart(canvas, {
       type: "radar",
@@ -838,9 +840,9 @@ addEventListener("DOMContentLoaded", () => {
       let imageURL;
       imageURL = data.sprites.other["official-artwork"]["front_default"]; // Extract imageURL from fetched data
 
-      let temp = data.stats[3];
-      data.stats[3] = data.stats[5];
-      data.stats[5] = temp;
+      // let temp = data.stats[3];
+      // data.stats[3] = data.stats[5];
+      // data.stats[5] = temp;
 
       // Store data in cache
       pokemonCache[pokemonName] = {
